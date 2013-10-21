@@ -74,6 +74,6 @@ Public Class App
         _db.Units.Remove(aUnit)
     End Sub
     Public Sub Recipe_Insert(aRecipe As Recipe) Implements iApp.Recipe_Insert
-
+        _db.Recipes.Add(aRecipe)
     End Sub
 End Class

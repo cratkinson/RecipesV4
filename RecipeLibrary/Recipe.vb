@@ -14,5 +14,8 @@ Public Class Recipe
     Public Overridable Property Contributor As Contributor
 
     Public Overridable Property Ingredients As ICollection(Of IngredientLine) = New HashSet(Of IngredientLine)
-
+    Public Sub AddIngredients(aBlock As String)
+        Dim p As IngredientParser = New IngredientParser
+        Me.Ingredients = p.ParseBlock(aBlock)
+    End Sub
 End Class

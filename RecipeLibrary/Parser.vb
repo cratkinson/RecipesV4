@@ -13,10 +13,10 @@ Public Class IngredientParser
     Private _instruction As List(Of String) = New List(Of String)
     Private _consumed As Boolean = False
     Private _stage As ParseStage = ParseStage.amount
-    Private _units As List(Of String) = New List(Of String)
-    'Private _units As List(Of unit) = New List(Of String) From {"cup", "ounce", "tablespoon", "teaspoon", "pound", "lb", "gram", "stick", "clove", "slice", "pinch"}
-    Public Sub New(Units As List(Of String))
-        _units = Units
+    'Private _units As List(Of String) = New List(Of String)
+    Private _units As List(Of String) = New List(Of String) From {"cup", "ounce", "tablespoon", "teaspoon", "pound", "lb", "gram", "stick", "clove", "slice", "pinch"}
+    Public Sub New()
+
     End Sub
 
     Public Function Parse(aLine As String) As IngredientLine
