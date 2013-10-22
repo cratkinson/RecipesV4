@@ -13,5 +13,8 @@ Public Class RecipeDB
     Public Property Ingredients As DbSet(Of IngredientLine)
     Public Property Units As DbSet(Of Unit)
 
+    Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
 
+        MyBase.OnModelCreating(modelBuilder)
+    End Sub
 End Class

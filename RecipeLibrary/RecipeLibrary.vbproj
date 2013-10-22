@@ -76,6 +76,11 @@
     <Compile Include="Contributor.vb" />
     <Compile Include="Favorite.vb" />
     <Compile Include="IngredientLine.vb" />
+    <Compile Include="Migrations\201310220224383_InitialCreate.Designer.vb">
+      <DependentUpon>201310220224383_InitialCreate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310220224383_InitialCreate.vb" />
+    <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -99,6 +104,9 @@
     <Compile Include="Unit.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201310220224383_InitialCreate.resx">
+      <DependentUpon>201310220224383_InitialCreate.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

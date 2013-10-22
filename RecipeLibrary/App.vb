@@ -22,7 +22,9 @@
     Sub Contributor_Update(aContributor As Contributor)
     Sub Contributor_Delete(aContributor As Contributor)
 
+    Function Recipe_Get_By_ID(ID As Integer) As Recipe
     Sub Recipe_Insert(aRecipe As Recipe)
+    Sub Recipe_Delete(aRecipe As Recipe)
 
     Sub Save()
 
@@ -98,4 +100,12 @@ Public Class App
     Sub Contributor_Delete(aContributor As Contributor) Implements iApp.Contributor_Delete
         _db.Contributors.Remove(aContributor)
     End Sub
+    Function Recipe_Get_By_ID(ID As Integer) As Recipe Implements iApp.Recipe_Get_By_ID
+        Return _db.Recipes.SingleOrDefault(Function(f) f.RecipeID = ID)
+    End Function
+
+    Sub Recipe_Delete(aRecipe As Recipe) Implements iApp.Recipe_Delete
+        _db.Recipes.Remove(aRecipe)
+    End Sub
+
 End Class
