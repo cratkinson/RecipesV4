@@ -6,14 +6,14 @@ Imports System.Resources
 
 Namespace Migrations
     <GeneratedCode("EntityFramework.Migrations", "6.0.1-21010")>
-    Public NotInheritable Partial Class FixFKIngredientLine
+    Public NotInheritable Partial Class Initial
         Implements IMigrationMetadata
     
-        Private ReadOnly Resources As New ResourceManager(GetType(FixFKIngredientLine))
+        Private ReadOnly Resources As New ResourceManager(GetType(Initial))
         
         Private ReadOnly Property IMigrationMetadata_Id() As String Implements IMigrationMetadata.Id
             Get
-                Return "201310221834409_FixFKIngredientLine"
+                Return "201310222244307_Initial"
             End Get
         End Property
         

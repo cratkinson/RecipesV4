@@ -42,7 +42,8 @@ Public Class App
     Implements iApp
 
     Private _db As RecipeDB = New RecipeDB
-
+    Public Sub New()
+    End Sub
     Public Sub Save() Implements iApp.Save
         Try
             _db.SaveChanges()

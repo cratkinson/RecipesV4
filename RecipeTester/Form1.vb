@@ -11,9 +11,9 @@ Public Class Form1
 
         Dim r As New Recipe
         With r
-            .Title = "My Second Recipe"
+            .Title = "My First Recipe"
             .Category = theApp.Category_Get_By_ID(1)
-            .Serving = theApp.Serving_Get_By_ID(1)
+            .Serving = theApp.Serving_Get_By_ID(2)
             .Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
             .Instructions = "Chop carrot and add to broth."
             .AddIngredients(TextBox1.Text)

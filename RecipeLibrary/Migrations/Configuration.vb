@@ -10,7 +10,6 @@ Namespace Migrations
 
         Public Sub New()
             AutomaticMigrationsEnabled = False
-            ContextKey = "RecipeLibrary.RecipeDB"
         End Sub
 
         Protected Overrides Sub Seed(context As RecipeDB)

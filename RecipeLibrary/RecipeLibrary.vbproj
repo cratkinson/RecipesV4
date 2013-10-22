@@ -76,34 +76,10 @@
     <Compile Include="Contributor.vb" />
     <Compile Include="Favorite.vb" />
     <Compile Include="IngredientLine.vb" />
-    <Compile Include="Migrations\201310220224383_InitialCreate.Designer.vb">
-      <DependentUpon>201310220224383_InitialCreate.vb</DependentUpon>
+    <Compile Include="Migrations\201310222244307_Initial.Designer.vb">
+      <DependentUpon>201310222244307_Initial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310220224383_InitialCreate.vb" />
-    <Compile Include="Migrations\201310221359403_EnforceRecipeFK.Designer.vb">
-      <DependentUpon>201310221359403_EnforceRecipeFK.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310221359403_EnforceRecipeFK.vb" />
-    <Compile Include="Migrations\201310221424010_ModifyRatingFavoriteFK.Designer.vb">
-      <DependentUpon>201310221424010_ModifyRatingFavoriteFK.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310221424010_ModifyRatingFavoriteFK.vb" />
-    <Compile Include="Migrations\201310221817581_FixIngredientAmountToDouble.Designer.vb">
-      <DependentUpon>201310221817581_FixIngredientAmountToDouble.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310221817581_FixIngredientAmountToDouble.vb" />
-    <Compile Include="Migrations\201310221834409_FixFKIngredientLine.Designer.vb">
-      <DependentUpon>201310221834409_FixFKIngredientLine.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310221834409_FixFKIngredientLine.vb" />
-    <Compile Include="Migrations\201310222120005_UpdateIngredientLineForDelete.Designer.vb">
-      <DependentUpon>201310222120005_UpdateIngredientLineForDelete.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310222120005_UpdateIngredientLineForDelete.vb" />
-    <Compile Include="Migrations\201310222153277_TweakIngredientLine.Designer.vb">
-      <DependentUpon>201310222153277_TweakIngredientLine.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201310222153277_TweakIngredientLine.vb" />
+    <Compile Include="Migrations\201310222244307_Initial.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -128,26 +104,8 @@
     <Compile Include="Unit.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201310220224383_InitialCreate.resx">
-      <DependentUpon>201310220224383_InitialCreate.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310221359403_EnforceRecipeFK.resx">
-      <DependentUpon>201310221359403_EnforceRecipeFK.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310221424010_ModifyRatingFavoriteFK.resx">
-      <DependentUpon>201310221424010_ModifyRatingFavoriteFK.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310221817581_FixIngredientAmountToDouble.resx">
-      <DependentUpon>201310221817581_FixIngredientAmountToDouble.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310221834409_FixFKIngredientLine.resx">
-      <DependentUpon>201310221834409_FixFKIngredientLine.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310222120005_UpdateIngredientLineForDelete.resx">
-      <DependentUpon>201310222120005_UpdateIngredientLineForDelete.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310222153277_TweakIngredientLine.resx">
-      <DependentUpon>201310222153277_TweakIngredientLine.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310222244307_Initial.resx">
+      <DependentUpon>201310222244307_Initial.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
