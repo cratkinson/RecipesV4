@@ -6,9 +6,7 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        Dim theR As Recipe = theApp.Recipe_Get_By_ID(1)
-        theApp.Recipe_Delete(theR)
-        theApp.Save()
+       
 
         Dim r As New Recipe
         With r
@@ -43,5 +41,11 @@ Public Class Form1
             .Contributor_Insert(New Contributor With {.Name = "Chip Atkinson", .EmailAddress = "chip@atkinsons.com"})
             .Save()
         End With
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim theR As Recipe = theApp.Recipe_Get_By_ID(1)
+        theApp.Recipe_Delete(theR)
+        theApp.Save()
     End Sub
 End Class

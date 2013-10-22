@@ -9,8 +9,13 @@ Public Class Recipe
     Public Property CookTime As Integer
     Public Property SourceURL As String
 
+    Public Property CategoryID As Integer
     Public Overridable Property Category As Category
+
+    Public Property ServingID As Integer
     Public Overridable Property Serving As Serving
+
+    Public Property ContributorID As Integer
     Public Overridable Property Contributor As Contributor
 
     Public Overridable Property Ingredients As ICollection(Of IngredientLine) = New HashSet(Of IngredientLine)

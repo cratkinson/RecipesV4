@@ -80,6 +80,14 @@
       <DependentUpon>201310220224383_InitialCreate.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201310220224383_InitialCreate.vb" />
+    <Compile Include="Migrations\201310221359403_EnforceRecipeFK.Designer.vb">
+      <DependentUpon>201310221359403_EnforceRecipeFK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310221359403_EnforceRecipeFK.vb" />
+    <Compile Include="Migrations\201310221424010_ModifyRatingFavoriteFK.Designer.vb">
+      <DependentUpon>201310221424010_ModifyRatingFavoriteFK.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310221424010_ModifyRatingFavoriteFK.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -106,6 +114,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201310220224383_InitialCreate.resx">
       <DependentUpon>201310220224383_InitialCreate.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310221359403_EnforceRecipeFK.resx">
+      <DependentUpon>201310221359403_EnforceRecipeFK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310221424010_ModifyRatingFavoriteFK.resx">
+      <DependentUpon>201310221424010_ModifyRatingFavoriteFK.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

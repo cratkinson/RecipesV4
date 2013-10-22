@@ -44,11 +44,11 @@ Namespace Migrations
                 "dbo.Recipes",
                 Function(c) New With
                     {
-                        .RecipeID = c.Int(nullable := False, identity := True),
-                        .Title = c.String(maxLength := 50),
+                        .RecipeID = c.Int(nullable:=False, identity:=True),
+                        .Title = c.String(maxLength:=50),
                         .Instructions = c.String(),
-                        .PrepareTime = c.Int(nullable := False),
-                        .CookTime = c.Int(nullable := False),
+                        .PrepareTime = c.Int(nullable:=False),
+                        .CookTime = c.Int(nullable:=False),
                         .SourceURL = c.String(),
                         .Category_CategoryID = c.Int(),
                         .Contributor_ContributorID = c.Int(),

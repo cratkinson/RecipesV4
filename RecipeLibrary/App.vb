@@ -22,6 +22,12 @@
     Sub Contributor_Update(aContributor As Contributor)
     Sub Contributor_Delete(aContributor As Contributor)
 
+    Function Serving_Get_All() As List(Of Serving)
+    Sub Serving_Insert(aServing As Serving)
+    Sub Serving_Update(aServing As Serving)
+    Sub Serving_Delete(aServing As Serving)
+
+
     Function Recipe_Get_By_ID(ID As Integer) As Recipe
     Sub Recipe_Insert(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
@@ -106,6 +112,19 @@ Public Class App
 
     Sub Recipe_Delete(aRecipe As Recipe) Implements iApp.Recipe_Delete
         _db.Recipes.Remove(aRecipe)
+    End Sub
+
+    Function Serving_Get_All() As List(Of Serving) Implements iApp.Serving_Get_All
+        Return _db.Servings.ToList
+    End Function
+    Sub Serving_Insert(aServing As Serving) Implements iApp.Serving_Insert
+        _db.Servings.Add(aServing)
+    End Sub
+    Sub Serving_Update(aServing As Serving) Implements iApp.Serving_Update
+        _db.Entry(aServing).State = Entity.EntityState.Modified
+    End Sub
+    Sub Serving_Delete(aServing As Serving) Implements iApp.Serving_Delete
+        _db.Servings.Remove(aServing)
     End Sub
 
 End Class
