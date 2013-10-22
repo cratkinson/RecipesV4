@@ -3,7 +3,7 @@
 Public Class IngredientLine
     Public Property IngredientLineID As Integer
     Public Overridable Property Recipe As Recipe
-    Public Property Amount As Decimal
+    Public Property Amount As Double
     <StringLength(40)> _
     Public Property Unit As String
     Public Property Ingredient As String

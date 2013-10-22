@@ -88,6 +88,10 @@
       <DependentUpon>201310221424010_ModifyRatingFavoriteFK.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201310221424010_ModifyRatingFavoriteFK.vb" />
+    <Compile Include="Migrations\201310221817581_FixIngredientAmountToDouble.Designer.vb">
+      <DependentUpon>201310221817581_FixIngredientAmountToDouble.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310221817581_FixIngredientAmountToDouble.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310221424010_ModifyRatingFavoriteFK.resx">
       <DependentUpon>201310221424010_ModifyRatingFavoriteFK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310221817581_FixIngredientAmountToDouble.resx">
+      <DependentUpon>201310221817581_FixIngredientAmountToDouble.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

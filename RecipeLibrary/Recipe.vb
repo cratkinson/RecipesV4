@@ -23,4 +23,11 @@ Public Class Recipe
         Dim p As IngredientParser = New IngredientParser
         Me.Ingredients = p.ParseBlock(aBlock)
     End Sub
+    Public Function IngredientsAsString() As String
+        Dim theString As String = String.Empty
+        For Each i In Me.Ingredients
+            theString += i.ToString + vbCrLf
+        Next
+        Return theString.Substring(0, theString.Length - 2)
+    End Function
 End Class

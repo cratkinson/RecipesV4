@@ -12,9 +12,10 @@ Public Class Form1
         With r
             .Title = "My First Recipe"
             .Category = theApp.Category_Get_ByID(1)
+            .Serving = theApp.Serving_Get_By_ID(1)
             .Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
             .Instructions = "Chop carrot and add to broth."
-            .AddIngredients("1/2 cup carrots, chopped" + vbCrLf + "2 cups broth")
+            .AddIngredients(TextBox1.Text)
         End With
         theApp.Recipe_Insert(r)
 
@@ -44,8 +45,14 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim theR As Recipe = theApp.Recipe_Get_By_ID(1)
+        Dim theR As Recipe = theApp.Recipe_Get_By_ID(2)
         theApp.Recipe_Delete(theR)
         theApp.Save()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(2)
+        TextBox2.Text = r.IngredientsAsString
+
     End Sub
 End Class

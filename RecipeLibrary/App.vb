@@ -23,6 +23,7 @@
     Sub Contributor_Delete(aContributor As Contributor)
 
     Function Serving_Get_All() As List(Of Serving)
+    Function Serving_Get_By_ID(ID As Integer) As Serving
     Sub Serving_Insert(aServing As Serving)
     Sub Serving_Update(aServing As Serving)
     Sub Serving_Delete(aServing As Serving)
@@ -117,6 +118,10 @@ Public Class App
     Function Serving_Get_All() As List(Of Serving) Implements iApp.Serving_Get_All
         Return _db.Servings.ToList
     End Function
+    Function Serving_Get_By_ID(ID As Integer) As Serving Implements iApp.Serving_Get_By_ID
+        Return _db.Servings.SingleOrDefault(Function(f) f.ServingID = ID)
+    End Function
+
     Sub Serving_Insert(aServing As Serving) Implements iApp.Serving_Insert
         _db.Servings.Add(aServing)
     End Sub
