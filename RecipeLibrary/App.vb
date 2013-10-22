@@ -5,7 +5,7 @@
     'Function GetRecipeByContributor(ContributorID As Integer) As List(Of Recipe)
 
     Function Category_Get_All() As List(Of Category)
-    Function Category_Get_ByID(ID As Integer) As Category
+    Function Category_Get_By_ID(ID As Integer) As Category
     Sub Category_Insert(aCategory As Category)
     Sub Category_Update(aCategory As Category)
     Sub Category_Delete(aCategory As Category)
@@ -31,6 +31,7 @@
 
     Function Recipe_Get_By_ID(ID As Integer) As Recipe
     Sub Recipe_Insert(aRecipe As Recipe)
+    Sub Recipe_Update(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
 
     Sub Save()
@@ -62,7 +63,7 @@ Public Class App
 
     End Function
 
-    Public Function Category_Get_ByID(ID As Integer) As Category Implements iApp.Category_Get_ByID
+    Public Function Category_Get_By_ID(ID As Integer) As Category Implements iApp.Category_Get_By_ID
         Return _db.Categories.SingleOrDefault(Function(f) f.CategoryID = ID)
 
     End Function
@@ -110,7 +111,9 @@ Public Class App
     Function Recipe_Get_By_ID(ID As Integer) As Recipe Implements iApp.Recipe_Get_By_ID
         Return _db.Recipes.SingleOrDefault(Function(f) f.RecipeID = ID)
     End Function
-
+    Sub Recipe_Update(aRecipe As Recipe) Implements iApp.Recipe_Update
+        _db.Entry(aRecipe).State = Entity.EntityState.Modified
+    End Sub
     Sub Recipe_Delete(aRecipe As Recipe) Implements iApp.Recipe_Delete
         _db.Recipes.Remove(aRecipe)
     End Sub

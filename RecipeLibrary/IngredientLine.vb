@@ -1,13 +1,16 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 
 Public Class IngredientLine
-    Public Property IngredientLineID As Integer
-    Public Overridable Property Recipe As Recipe
+    <Key> _
+    Public Overridable Property IngredientLineID As Integer
     Public Property Amount As Double
     <StringLength(40)> _
     Public Property Unit As String
     Public Property Ingredient As String
     Public Property Instruction As String
+
+    Public Overridable Property RecipeID As Integer
+    Public Overridable Property Recipe As Recipe
 
     Public Overrides Function ToString() As String
         Dim s As String = String.Empty

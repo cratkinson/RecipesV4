@@ -3,6 +3,7 @@ Imports RecipeLibrary.App
 
 Public Class Form1
     Private theApp As App = New App
+    Private theRecipe As Recipe
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
@@ -10,8 +11,8 @@ Public Class Form1
 
         Dim r As New Recipe
         With r
-            .Title = "My First Recipe"
-            .Category = theApp.Category_Get_ByID(1)
+            .Title = "My Second Recipe"
+            .Category = theApp.Category_Get_By_ID(1)
             .Serving = theApp.Serving_Get_By_ID(1)
             .Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
             .Instructions = "Chop carrot and add to broth."
@@ -51,8 +52,14 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(2)
-        TextBox2.Text = r.IngredientsAsString
+        theRecipe = theApp.Recipe_Get_By_ID(3)
+        TextBox2.Text = theRecipe.IngredientsAsString
 
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        theRecipe.AddIngredients(TextBox2.Text)
+        theApp.Recipe_Update(theRecipe)
+        theApp.Save()
     End Sub
 End Class
