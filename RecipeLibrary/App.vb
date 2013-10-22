@@ -16,6 +16,12 @@
     Sub Unit_Update(aUnit As Unit)
     Sub Unit_Delete(aUnit As Unit)
 
+    Function Contributor_Get_All() As List(Of Contributor)
+    Function Contributor_Get_By_Email(email As String) As Contributor
+    Sub Contributor_Insert(aContributor As Contributor)
+    Sub Contributor_Update(aContributor As Contributor)
+    Sub Contributor_Delete(aContributor As Contributor)
+
     Sub Recipe_Insert(aRecipe As Recipe)
 
     Sub Save()
@@ -75,5 +81,21 @@ Public Class App
     End Sub
     Public Sub Recipe_Insert(aRecipe As Recipe) Implements iApp.Recipe_Insert
         _db.Recipes.Add(aRecipe)
+    End Sub
+
+    Function Contributor_Get_All() As List(Of Contributor) Implements iApp.Contributor_Get_All
+        Return _db.Contributors.ToList
+    End Function
+    Function Contributor_Get_By_Email(email As String) As Contributor Implements iApp.Contributor_Get_By_Email
+        Return _db.Contributors.SingleOrDefault(Function(f) f.EmailAddress = email)
+    End Function
+    Sub Contributor_Insert(aContributor As Contributor) Implements iApp.Contributor_Insert
+        _db.Contributors.Add(aContributor)
+    End Sub
+    Sub Contributor_Update(aContributor As Contributor) Implements iApp.Contributor_Update
+        _db.Entry(aContributor).State = Entity.EntityState.Modified
+    End Sub
+    Sub Contributor_Delete(aContributor As Contributor) Implements iApp.Contributor_Delete
+        _db.Contributors.Remove(aContributor)
     End Sub
 End Class
