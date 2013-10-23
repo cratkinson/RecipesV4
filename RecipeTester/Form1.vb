@@ -7,13 +7,13 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-       
+
 
         Dim r As New Recipe
         With r
             .Title = "My First Recipe"
             .Category = theApp.Category_Get_By_ID(1)
-            .Serving = theApp.Serving_Get_By_ID(2)
+            .Serving = theApp.Serving_Get_By_ID(1)
             .Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
             .Instructions = "Chop carrot and add to broth."
             .AddIngredients(TextBox1.Text)
@@ -40,6 +40,7 @@ Public Class Form1
             .Category_Insert(New Category With {.Description = "Desserts"})
             .Unit_Insert(New Unit With {.Description = "tbl", .ExpandedDescription = "tablespoon"})
             .Unit_Insert(New Unit With {.Description = "cup"})
+            .Serving_Insert(New Serving With {.Description = "1", .ScaleFactor = 1})
             .Contributor_Insert(New Contributor With {.Name = "Chip Atkinson", .EmailAddress = "chip@atkinsons.com"})
             .Save()
         End With
@@ -52,13 +53,22 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        theRecipe = theApp.Recipe_Get_By_ID(3)
+        theRecipe = theApp.Recipe_Get_By_ID(1)
         TextBox2.Text = theRecipe.IngredientsAsString
 
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         theRecipe.AddIngredients(TextBox2.Text)
+        theApp.Recipe_Update(theRecipe)
+        theApp.Save()
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        theRecipe = theApp.Recipe_Get_By_ID(1)
+        For Each i In theRecipe.Ingredients.ToList
+            theRecipe.Ingredients.Remove(i)
+        Next
         theApp.Recipe_Update(theRecipe)
         theApp.Save()
     End Sub

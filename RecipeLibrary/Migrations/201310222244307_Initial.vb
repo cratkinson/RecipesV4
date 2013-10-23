@@ -66,15 +66,15 @@ Namespace Migrations
                 "dbo.IngredientLines",
                 Function(c) New With
                     {
-                        .IngredientLineID = c.Int(nullable:=False),
-                        .RecipeID = c.Int(nullable:=False),
-                        .Amount = c.Double(nullable:=False),
-                        .Unit = c.String(maxLength:=40),
+                        .IngredientLineID = c.Int(nullable := False, identity := True),
+                        .Amount = c.Double(nullable := False),
+                        .Unit = c.String(maxLength := 40),
                         .Ingredient = c.String(),
-                        .Instruction = c.String()
+                        .Instruction = c.String(),
+                        .RecipeID = c.Int(nullable := False)
                     }) _
-                .PrimaryKey(Function(t) New With {t.IngredientLineID, t.RecipeID}) _
-                .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete:=True) _
+                .PrimaryKey(Function(t) t.IngredientLineID) _
+                .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete := True) _
                 .Index(Function(t) t.RecipeID)
             
             CreateTable(
