@@ -66,54 +66,63 @@ Namespace Migrations
                 "dbo.IngredientLines",
                 Function(c) New With
                     {
-                        .IngredientLineID = c.Int(nullable := False, identity := True),
-                        .Amount = c.Double(nullable := False),
-                        .Unit = c.String(maxLength := 40),
+                        .IngredientLineID = c.Int(nullable:=False, identity:=True),
+                        .Amount = c.Double(nullable:=False),
+                        .Unit = c.String(maxLength:=40),
                         .Ingredient = c.String(),
                         .Instruction = c.String(),
-                        .RecipeID = c.Int(nullable := False)
+                        .RecipeID = c.Int(nullable:=False)
                     }) _
-                .PrimaryKey(Function(t) t.IngredientLineID) _
-                .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete := True) _
+                .PrimaryKey(Function(t) New With {t.IngredientLineID, t.RecipeID}) _
+                .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete:=True) _
                 .Index(Function(t) t.RecipeID)
-            
+
             CreateTable(
                 "dbo.Servings",
                 Function(c) New With
                     {
-                        .ServingID = c.Int(nullable := False, identity := True),
-                        .Description = c.String(maxLength := 40),
-                        .ScaleFactor = c.Decimal(nullable := False, precision := 18, scale := 2)
+                        .ServingID = c.Int(nullable:=False, identity:=True),
+                        .Description = c.String(maxLength:=40),
+                        .ScaleFactor = c.Decimal(nullable:=False, precision:=18, scale:=2)
                     }) _
                 .PrimaryKey(Function(t) t.ServingID)
-            
+
+            CreateTable(
+                "dbo.MyTests",
+                Function(c) New With
+                    {
+                        .Col1ID = c.Int(nullable:=False),
+                        .Col2ID = c.Int(nullable:=False)
+                    }) _
+                .PrimaryKey(Function(t) New With {t.Col1ID, t.Col2ID})
+
             CreateTable(
                 "dbo.Ratings",
                 Function(c) New With
                     {
-                        .RatingID = c.Int(nullable := False, identity := True),
-                        .RatingScore = c.Int(nullable := False),
-                        .RecipeID = c.Int(nullable := False),
-                        .ContributorID = c.Int(nullable := False)
+                        .RatingID = c.Int(nullable:=False, identity:=True),
+                        .RatingScore = c.Int(nullable:=False),
+                        .RecipeID = c.Int(nullable:=False),
+                        .ContributorID = c.Int(nullable:=False)
                     }) _
                 .PrimaryKey(Function(t) t.RatingID) _
-                .ForeignKey("dbo.Contributors", Function(t) t.ContributorID, cascadeDelete := True) _
-                .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete := True) _
+                .ForeignKey("dbo.Contributors", Function(t) t.ContributorID, cascadeDelete:=True) _
+                .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete:=True) _
                 .Index(Function(t) t.ContributorID) _
                 .Index(Function(t) t.RecipeID)
-            
+
             CreateTable(
                 "dbo.Units",
                 Function(c) New With
                     {
-                        .UnitID = c.Int(nullable := False, identity := True),
-                        .Description = c.String(maxLength := 40),
-                        .ExpandedDescription = c.String(maxLength := 40)
+                        .UnitID = c.Int(nullable:=False, identity:=True),
+                        .Description = c.String(maxLength:=40),
+                        .ExpandedDescription = c.String(maxLength:=40)
                     }) _
                 .PrimaryKey(Function(t) t.UnitID)
-            
+
         End Sub
-        
+
         Public Overrides Sub Down()
             DropForeignKey("dbo.Ratings", "RecipeID", "dbo.Recipes")
             DropForeignKey("dbo.Ratings", "ContributorID", "dbo.Contributors")
@@ -123,16 +132,17 @@ Namespace Migrations
             DropForeignKey("dbo.Recipes", "ContributorID", "dbo.Contributors")
             DropForeignKey("dbo.Recipes", "CategoryID", "dbo.Categories")
             DropForeignKey("dbo.Favorites", "ContributorID", "dbo.Contributors")
-            DropIndex("dbo.Ratings", New String() { "RecipeID" })
-            DropIndex("dbo.Ratings", New String() { "ContributorID" })
-            DropIndex("dbo.Favorites", New String() { "RecipeID" })
-            DropIndex("dbo.Recipes", New String() { "ServingID" })
-            DropIndex("dbo.IngredientLines", New String() { "RecipeID" })
-            DropIndex("dbo.Recipes", New String() { "ContributorID" })
-            DropIndex("dbo.Recipes", New String() { "CategoryID" })
-            DropIndex("dbo.Favorites", New String() { "ContributorID" })
+            DropIndex("dbo.Ratings", New String() {"RecipeID"})
+            DropIndex("dbo.Ratings", New String() {"ContributorID"})
+            DropIndex("dbo.Favorites", New String() {"RecipeID"})
+            DropIndex("dbo.Recipes", New String() {"ServingID"})
+            DropIndex("dbo.IngredientLines", New String() {"RecipeID"})
+            DropIndex("dbo.Recipes", New String() {"ContributorID"})
+            DropIndex("dbo.Recipes", New String() {"CategoryID"})
+            DropIndex("dbo.Favorites", New String() {"ContributorID"})
             DropTable("dbo.Units")
             DropTable("dbo.Ratings")
+            DropTable("dbo.MyTests")
             DropTable("dbo.Servings")
             DropTable("dbo.IngredientLines")
             DropTable("dbo.Recipes")

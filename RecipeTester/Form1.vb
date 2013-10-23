@@ -13,7 +13,7 @@ Public Class Form1
         With r
             .Title = "My First Recipe"
             .Category = theApp.Category_Get_By_ID(1)
-            .Serving = theApp.Serving_Get_By_ID(1)
+            .Serving = theApp.Serving_Get_By_ID(2)
             .Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
             .Instructions = "Chop carrot and add to broth."
             .AddIngredients(TextBox1.Text)
@@ -53,7 +53,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        theRecipe = theApp.Recipe_Get_By_ID(1)
+        theRecipe = theApp.Recipe_Get_By_ID(2)
         TextBox2.Text = theRecipe.IngredientsAsString
 
     End Sub
@@ -65,11 +65,13 @@ Public Class Form1
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        theRecipe = theApp.Recipe_Get_By_ID(1)
-        For Each i In theRecipe.Ingredients.ToList
-            theRecipe.Ingredients.Remove(i)
-        Next
-        theApp.Recipe_Update(theRecipe)
-        theApp.Save()
+        Using db As RecipeDB = New RecipeDB
+            Dim r As Recipe = db.Recipes.First()
+            Dim i As IngredientLine = r.Ingredients.First()
+            r.Ingredients.Remove(i)
+            db.SaveChanges()
+
+
+        End Using
     End Sub
 End Class

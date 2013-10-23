@@ -76,10 +76,14 @@
     <Compile Include="Contributor.vb" />
     <Compile Include="Favorite.vb" />
     <Compile Include="IngredientLine.vb" />
-    <Compile Include="Migrations\201310222244307_Initial.Designer.vb">
-      <DependentUpon>201310222244307_Initial.vb</DependentUpon>
+    <Compile Include="Migrations\201310232110590_Initial.Designer.vb">
+      <DependentUpon>201310232110590_Initial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310222244307_Initial.vb" />
+    <Compile Include="Migrations\201310232110590_Initial.vb" />
+    <Compile Include="Migrations\201310232235215_Intial.Designer.vb">
+      <DependentUpon>201310232235215_Intial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310232235215_Intial.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -96,6 +100,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="MyTest.vb" />
     <Compile Include="Parser.vb" />
     <Compile Include="Rating.vb" />
     <Compile Include="Recipe.vb" />
@@ -104,8 +109,11 @@
     <Compile Include="Unit.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201310222244307_Initial.resx">
-      <DependentUpon>201310222244307_Initial.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310232110590_Initial.resx">
+      <DependentUpon>201310232110590_Initial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310232235215_Intial.resx">
+      <DependentUpon>201310232235215_Intial.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

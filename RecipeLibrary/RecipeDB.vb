@@ -12,6 +12,7 @@ Public Class RecipeDB
     Public Property Ratings As DbSet(Of Rating)
     Public Property Ingredients As DbSet(Of IngredientLine)
     Public Property Units As DbSet(Of Unit)
+    Public Property MyTests As DbSet(Of MyTest)
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
 

@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 
 Public Class IngredientLine
+    <Key, Schema.Column(order:=1), Schema.DatabaseGenerated(Schema.DatabaseGeneratedOption.Identity)> _
     Public Property IngredientLineID As Integer
     Public Property Amount As Double
     <StringLength(40)> _
@@ -8,6 +9,7 @@ Public Class IngredientLine
     Public Property Ingredient As String
     Public Property Instruction As String
 
+    <Key, Schema.Column(Order:=2)> _
     Public Overridable Property RecipeID As Integer
     Public Overridable Property Recipe As Recipe
 
