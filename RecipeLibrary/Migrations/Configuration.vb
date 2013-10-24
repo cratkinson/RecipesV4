@@ -13,6 +13,17 @@ Namespace Migrations
         End Sub
 
         Protected Overrides Sub Seed(context As RecipeDB)
+            context.Categories.AddOrUpdate( _
+                Function(f) f.Description, _
+                New Category With {.Description = "Soup"},
+                New Category With {.Description = "Dessert"})
+
+            context.Units.AddOrUpdate( _
+                Function(f) f.Description, _
+                New Unit With {.Description = "cup"},
+                New Unit With {.Description = "tbl", .ExpandedDescription = "tablespoon"}
+                )
+
             '  This method will be called after migrating to the latest version.
 
             '  You can use the DbSet(Of T).AddOrUpdate() helper extension method 
