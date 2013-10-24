@@ -60,7 +60,7 @@ Public Class App
     End Sub
 
     Public Function Category_Get_All() As List(Of Category) Implements iApp.Category_Get_All
-        Return _db.Categories.ToList()
+        Return _db.Categories.ToList
 
     End Function
 
