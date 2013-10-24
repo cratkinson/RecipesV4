@@ -76,14 +76,14 @@
     <Compile Include="Contributor.vb" />
     <Compile Include="Favorite.vb" />
     <Compile Include="IngredientLine.vb" />
-    <Compile Include="Migrations\201310240321570_Initial.Designer.vb">
-      <DependentUpon>201310240321570_Initial.vb</DependentUpon>
+    <Compile Include="Migrations\201310241822474_Initial.Designer.vb">
+      <DependentUpon>201310241822474_Initial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310240321570_Initial.vb" />
-    <Compile Include="Migrations\201310240324459_RemoveMyTest.Designer.vb">
-      <DependentUpon>201310240324459_RemoveMyTest.vb</DependentUpon>
+    <Compile Include="Migrations\201310241822474_Initial.vb" />
+    <Compile Include="Migrations\201310241826140_RemoveTempClass.Designer.vb">
+      <DependentUpon>201310241826140_RemoveTempClass.vb</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201310240324459_RemoveMyTest.vb" />
+    <Compile Include="Migrations\201310241826140_RemoveTempClass.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -108,11 +108,11 @@
     <Compile Include="Unit.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201310240321570_Initial.resx">
-      <DependentUpon>201310240321570_Initial.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310241822474_Initial.resx">
+      <DependentUpon>201310241822474_Initial.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201310240324459_RemoveMyTest.resx">
-      <DependentUpon>201310240324459_RemoveMyTest.vb</DependentUpon>
+    <EmbeddedResource Include="Migrations\201310241826140_RemoveTempClass.resx">
+      <DependentUpon>201310241826140_RemoveTempClass.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

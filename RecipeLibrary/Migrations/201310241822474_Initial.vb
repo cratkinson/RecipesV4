@@ -88,15 +88,6 @@ Namespace Migrations
                 .PrimaryKey(Function(t) t.ServingID)
             
             CreateTable(
-                "dbo.MyTests",
-                Function(c) New With
-                    {
-                        .Col1ID = c.Int(nullable := False),
-                        .Col2ID = c.Int(nullable := False)
-                    }) _
-                .PrimaryKey(Function(t) New With { t.Col1ID, t.Col2ID })
-            
-            CreateTable(
                 "dbo.Ratings",
                 Function(c) New With
                     {
@@ -110,6 +101,15 @@ Namespace Migrations
                 .ForeignKey("dbo.Recipes", Function(t) t.RecipeID, cascadeDelete := True) _
                 .Index(Function(t) t.ContributorID) _
                 .Index(Function(t) t.RecipeID)
+            
+            CreateTable(
+                "dbo.Temps",
+                Function(c) New With
+                    {
+                        .ID = c.Int(nullable := False, identity := True),
+                        .Name = c.String()
+                    }) _
+                .PrimaryKey(Function(t) t.ID)
             
             CreateTable(
                 "dbo.Units",
@@ -141,8 +141,8 @@ Namespace Migrations
             DropIndex("dbo.Recipes", New String() { "CategoryID" })
             DropIndex("dbo.Favorites", New String() { "ContributorID" })
             DropTable("dbo.Units")
+            DropTable("dbo.Temps")
             DropTable("dbo.Ratings")
-            DropTable("dbo.MyTests")
             DropTable("dbo.Servings")
             DropTable("dbo.IngredientLines")
             DropTable("dbo.Recipes")

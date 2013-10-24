@@ -12,7 +12,9 @@ Public Class RecipeDB
     Public Property Ratings As DbSet(Of Rating)
     Public Property Ingredients As DbSet(Of IngredientLine)
     Public Property Units As DbSet(Of Unit)
-
+    Public Sub New()
+        MyBase.New("RecipeDB")
+    End Sub
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
 
         MyBase.OnModelCreating(modelBuilder)
