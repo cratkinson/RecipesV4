@@ -19,6 +19,20 @@ Public Class Recipe
     Public Overridable Property Contributor As Contributor
 
     Public Overridable Property Ingredients As ICollection(Of IngredientLine) = New HashSet(Of IngredientLine)
+    <Schema.NotMapped> _
+    Public ReadOnly Property IngredientsBlock As String
+        Get
+            If Me.Ingredients.Count > 0 Then
+                Dim theString As String = String.Empty
+                For Each i In Me.Ingredients
+                    theString += i.ToString + vbCrLf
+                Next
+                Return theString.Substring(0, theString.Length - 2)
+            Else
+                Return String.Empty
+            End If
+        End Get
+    End Property
     Public Sub AddIngredientsV2(aBlock As String)
         Dim p As IngredientParser = New IngredientParser
         Dim theList As List(Of IngredientLine) = p.ParseBlock(aBlock)
@@ -90,6 +104,7 @@ Public Class Recipe
             Me.Ingredients = theList
         End If
     End Sub
+
     Public Function IngredientsAsString() As String
         If Me.Ingredients.Count > 0 Then
             Dim theString As String = String.Empty

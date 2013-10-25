@@ -1,5 +1,5 @@
 ﻿Imports RecipeLibrary
-Public Class Form1
+Public Class frmAdmin
     Private theApp As App = New App
     Private Enum EditState
         Category

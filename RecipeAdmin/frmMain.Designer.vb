@@ -1,0 +1,248 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class frmMain
+    Inherits System.Windows.Forms.Form
+
+    'Form overrides dispose to clean up the component list.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Required by the Windows Form Designer
+    Private components As System.ComponentModel.IContainer
+
+    'NOTE: The following procedure is required by the Windows Form Designer
+    'It can be modified using the Windows Form Designer.  
+    'Do not modify it using the code editor.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.cbServing = New System.Windows.Forms.ComboBox()
+        Me.txtTitle = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtPrepTime = New System.Windows.Forms.TextBox()
+        Me.txtCookTime = New System.Windows.Forms.TextBox()
+        Me.txtIngredients = New System.Windows.Forms.TextBox()
+        Me.txtInstructions = New System.Windows.Forms.TextBox()
+        Me.lblInstructions = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.txtContributor = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'cbCategory
+        '
+        Me.cbCategory.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.bs, "CategoryID", True))
+        Me.cbCategory.FormattingEnabled = True
+        Me.cbCategory.Location = New System.Drawing.Point(20, 56)
+        Me.cbCategory.Name = "cbCategory"
+        Me.cbCategory.Size = New System.Drawing.Size(121, 21)
+        Me.cbCategory.TabIndex = 0
+        '
+        'cbServing
+        '
+        Me.cbServing.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.bs, "ServingID", True))
+        Me.cbServing.FormattingEnabled = True
+        Me.cbServing.Location = New System.Drawing.Point(147, 56)
+        Me.cbServing.Name = "cbServing"
+        Me.cbServing.Size = New System.Drawing.Size(121, 21)
+        Me.cbServing.TabIndex = 1
+        '
+        'txtTitle
+        '
+        Me.txtTitle.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Title", True))
+        Me.txtTitle.Location = New System.Drawing.Point(20, 18)
+        Me.txtTitle.Name = "txtTitle"
+        Me.txtTitle.Size = New System.Drawing.Size(248, 20)
+        Me.txtTitle.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(29, 2)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(27, 13)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Title"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(29, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(49, 13)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Category"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(151, 41)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(48, 13)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Servings"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(151, 80)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(58, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Cook Time"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(29, 80)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(87, 13)
+        Me.Label5.TabIndex = 6
+        Me.Label5.Text = "Preparation Time"
+        '
+        'txtPrepTime
+        '
+        Me.txtPrepTime.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "PrepareTime", True))
+        Me.txtPrepTime.Location = New System.Drawing.Point(20, 96)
+        Me.txtPrepTime.Name = "txtPrepTime"
+        Me.txtPrepTime.Size = New System.Drawing.Size(121, 20)
+        Me.txtPrepTime.TabIndex = 8
+        Me.txtPrepTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtCookTime
+        '
+        Me.txtCookTime.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "CookTime", True))
+        Me.txtCookTime.Location = New System.Drawing.Point(147, 96)
+        Me.txtCookTime.Name = "txtCookTime"
+        Me.txtCookTime.Size = New System.Drawing.Size(121, 20)
+        Me.txtCookTime.TabIndex = 9
+        Me.txtCookTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'txtIngredients
+        '
+        Me.txtIngredients.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "IngredientsBlock", True))
+        Me.txtIngredients.Location = New System.Drawing.Point(12, 136)
+        Me.txtIngredients.Multiline = True
+        Me.txtIngredients.Name = "txtIngredients"
+        Me.txtIngredients.Size = New System.Drawing.Size(193, 207)
+        Me.txtIngredients.TabIndex = 10
+        '
+        'txtInstructions
+        '
+        Me.txtInstructions.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Instructions", True))
+        Me.txtInstructions.Location = New System.Drawing.Point(211, 136)
+        Me.txtInstructions.Multiline = True
+        Me.txtInstructions.Name = "txtInstructions"
+        Me.txtInstructions.Size = New System.Drawing.Size(193, 207)
+        Me.txtInstructions.TabIndex = 11
+        '
+        'lblInstructions
+        '
+        Me.lblInstructions.AutoSize = True
+        Me.lblInstructions.Location = New System.Drawing.Point(271, 120)
+        Me.lblInstructions.Name = "lblInstructions"
+        Me.lblInstructions.Size = New System.Drawing.Size(61, 13)
+        Me.lblInstructions.TabIndex = 13
+        Me.lblInstructions.Text = "Instructions"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(81, 120)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(59, 13)
+        Me.Label7.TabIndex = 12
+        Me.Label7.Text = "Ingredients"
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(303, 75)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.TabIndex = 14
+        Me.btnAdd.Text = "Update"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'txtContributor
+        '
+        Me.txtContributor.Location = New System.Drawing.Point(279, 18)
+        Me.txtContributor.Name = "txtContributor"
+        Me.txtContributor.Size = New System.Drawing.Size(125, 20)
+        Me.txtContributor.TabIndex = 15
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(303, 46)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Get"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'frmMain
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(417, 354)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.txtContributor)
+        Me.Controls.Add(Me.btnAdd)
+        Me.Controls.Add(Me.lblInstructions)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.txtInstructions)
+        Me.Controls.Add(Me.txtIngredients)
+        Me.Controls.Add(Me.txtCookTime)
+        Me.Controls.Add(Me.txtPrepTime)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtTitle)
+        Me.Controls.Add(Me.cbServing)
+        Me.Controls.Add(Me.cbCategory)
+        Me.Name = "frmMain"
+        Me.Text = "frmMain"
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Friend WithEvents cbCategory As System.Windows.Forms.ComboBox
+    Friend WithEvents cbServing As System.Windows.Forms.ComboBox
+    Friend WithEvents txtTitle As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtPrepTime As System.Windows.Forms.TextBox
+    Friend WithEvents txtCookTime As System.Windows.Forms.TextBox
+    Friend WithEvents txtIngredients As System.Windows.Forms.TextBox
+    Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
+    Friend WithEvents lblInstructions As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents btnAdd As System.Windows.Forms.Button
+    Friend WithEvents txtContributor As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents bs As System.Windows.Forms.BindingSource
+End Class
