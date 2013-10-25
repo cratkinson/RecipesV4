@@ -97,6 +97,10 @@
       <DependentUpon>201310251426095_201310251421499_AddActivityClass.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201310251426095_201310251421499_AddActivityClass.vb" />
+    <Compile Include="Migrations\201310252043246_ActivtiesTableModify.Designer.vb">
+      <DependentUpon>201310252043246_ActivtiesTableModify.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310252043246_ActivtiesTableModify.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310251426095_201310251421499_AddActivityClass.resx">
       <DependentUpon>201310251426095_201310251421499_AddActivityClass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310252043246_ActivtiesTableModify.resx">
+      <DependentUpon>201310252043246_ActivtiesTableModify.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

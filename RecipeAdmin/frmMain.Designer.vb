@@ -24,6 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -39,8 +40,8 @@ Partial Class frmMain
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbContributors = New System.Windows.Forms.ComboBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -52,6 +53,10 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -175,7 +180,7 @@ Partial Class frmMain
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 14
-        Me.btnAdd.Text = "Update"
+        Me.btnAdd.Text = "Insert"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
         'Button1
@@ -187,10 +192,6 @@ Partial Class frmMain
         Me.Button1.Text = "Get"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
         'cbContributors
         '
         Me.cbContributors.FormattingEnabled = True
@@ -199,11 +200,21 @@ Partial Class frmMain
         Me.cbContributors.Size = New System.Drawing.Size(143, 21)
         Me.cbContributors.TabIndex = 17
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(384, 75)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 18
+        Me.Button2.Text = "Update"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(556, 354)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.cbContributors)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnAdd)
@@ -246,4 +257,5 @@ Partial Class frmMain
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents bs As System.Windows.Forms.BindingSource
     Friend WithEvents cbContributors As System.Windows.Forms.ComboBox
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

@@ -51,6 +51,9 @@ Public Class App
             Throw New Exception(ex.Message)
         End Try
     End Sub
+    '--------------------------------------------------------------------
+    ' Categories
+    '--------------------------------------------------------------------
     Public Sub Category_Insert(aCategory As Category) Implements iApp.Category_Insert
         _db.Categories.Add(aCategory)
     End Sub
@@ -72,7 +75,9 @@ Public Class App
     Public Sub Category_Update(aCategory As Category) Implements iApp.Category_Update
         _db.Entry(aCategory).State = Entity.EntityState.Modified
     End Sub
-
+    '--------------------------------------------------------------------
+    ' Units
+    '--------------------------------------------------------------------
     Public Function Unit_Get_All() As List(Of Unit) Implements iApp.Unit_Get_All
         Return _db.Units.ToList
 
@@ -90,13 +95,10 @@ Public Class App
     Public Sub Unit_Delete(aUnit As Unit) Implements iApp.Unit_Delete
         _db.Units.Remove(aUnit)
     End Sub
-    Public Sub Recipe_Insert(aRecipe As Recipe) Implements iApp.Recipe_Insert
-        aRecipe.FirstAdded = Date.Now
-        aRecipe.LastUpdated = Date.Now
-        _db.Recipes.Add(aRecipe)
-        PostAnActivity(aRecipe, Activities.Insert)
-    End Sub
-
+    
+    '--------------------------------------------------------------------
+    ' Contributors
+    '--------------------------------------------------------------------
     Function Contributor_Get_All() As List(Of Contributor) Implements iApp.Contributor_Get_All
         Return _db.Contributors.ToList
     End Function
@@ -112,9 +114,18 @@ Public Class App
     Sub Contributor_Delete(aContributor As Contributor) Implements iApp.Contributor_Delete
         _db.Contributors.Remove(aContributor)
     End Sub
+    '--------------------------------------------------------------------
+    ' RECIPES
+    '--------------------------------------------------------------------
     Function Recipe_Get_By_ID(ID As Integer) As Recipe Implements iApp.Recipe_Get_By_ID
         Return _db.Recipes.SingleOrDefault(Function(f) f.RecipeID = ID)
     End Function
+    Public Sub Recipe_Insert(aRecipe As Recipe) Implements iApp.Recipe_Insert
+        aRecipe.FirstAdded = Date.Now
+        aRecipe.LastUpdated = Date.Now
+        _db.Recipes.Add(aRecipe)
+        PostAnActivity(aRecipe, Activities.Insert)
+    End Sub
     Sub Recipe_Update(aRecipe As Recipe) Implements iApp.Recipe_Update
         aRecipe.LastUpdated = Date.Now
         PostAnActivity(aRecipe, Activities.Update)
@@ -124,7 +135,9 @@ Public Class App
         PostAnActivity(aRecipe, Activities.Delete)
         _db.Recipes.Remove(aRecipe)
     End Sub
-
+    '--------------------------------------------------------------------
+    ' Servings
+    '--------------------------------------------------------------------
     Function Serving_Get_All() As List(Of Serving) Implements iApp.Serving_Get_All
         Return _db.Servings.ToList
     End Function
@@ -141,14 +154,16 @@ Public Class App
     Sub Serving_Delete(aServing As Serving) Implements iApp.Serving_Delete
         _db.Servings.Remove(aServing)
     End Sub
+    '--------------------------------------------------------------------
+    ' Private Subs & Functions
+    '--------------------------------------------------------------------
     Private Sub PostAnActivity(aRecipe As Recipe, aActivity As Activities)
         Dim a As New ActivityLog
         With a
             .Activity = aActivity
             .ActivityDate = DateTime.Now
-            .ContributorID = aRecipe.ContributorID
-            .RecipeID = aRecipe.RecipeID
-
+            .ContributorName = aRecipe.Contributor.Name
+            .RecipeName = aRecipe.Title
         End With
         _db.ActivityLogs.Add(a)
     End Sub

@@ -45,8 +45,15 @@ Public Class frmMain
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(2)
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(6)
         bs.DataSource = r
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim r As Recipe = bs.DataSource
+        r.AddIngredients(txtIngredients.Text)
+        theApp.Recipe_Update(r)
 
     End Sub
 End Class
