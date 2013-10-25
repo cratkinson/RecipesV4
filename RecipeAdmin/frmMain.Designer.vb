@@ -38,9 +38,9 @@ Partial Class frmMain
         Me.lblInstructions = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.txtContributor = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.cbContributors = New System.Windows.Forms.ComboBox()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -139,22 +139,22 @@ Partial Class frmMain
         Me.txtIngredients.Location = New System.Drawing.Point(12, 136)
         Me.txtIngredients.Multiline = True
         Me.txtIngredients.Name = "txtIngredients"
-        Me.txtIngredients.Size = New System.Drawing.Size(193, 207)
+        Me.txtIngredients.Size = New System.Drawing.Size(256, 207)
         Me.txtIngredients.TabIndex = 10
         '
         'txtInstructions
         '
         Me.txtInstructions.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Instructions", True))
-        Me.txtInstructions.Location = New System.Drawing.Point(211, 136)
+        Me.txtInstructions.Location = New System.Drawing.Point(279, 135)
         Me.txtInstructions.Multiline = True
         Me.txtInstructions.Name = "txtInstructions"
-        Me.txtInstructions.Size = New System.Drawing.Size(193, 207)
+        Me.txtInstructions.Size = New System.Drawing.Size(249, 207)
         Me.txtInstructions.TabIndex = 11
         '
         'lblInstructions
         '
         Me.lblInstructions.AutoSize = True
-        Me.lblInstructions.Location = New System.Drawing.Point(271, 120)
+        Me.lblInstructions.Location = New System.Drawing.Point(372, 119)
         Me.lblInstructions.Name = "lblInstructions"
         Me.lblInstructions.Size = New System.Drawing.Size(61, 13)
         Me.lblInstructions.TabIndex = 13
@@ -163,7 +163,7 @@ Partial Class frmMain
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(81, 120)
+        Me.Label7.Location = New System.Drawing.Point(117, 120)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(59, 13)
         Me.Label7.TabIndex = 12
@@ -178,13 +178,6 @@ Partial Class frmMain
         Me.btnAdd.Text = "Update"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'txtContributor
-        '
-        Me.txtContributor.Location = New System.Drawing.Point(279, 18)
-        Me.txtContributor.Name = "txtContributor"
-        Me.txtContributor.Size = New System.Drawing.Size(125, 20)
-        Me.txtContributor.TabIndex = 15
-        '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(303, 46)
@@ -198,13 +191,21 @@ Partial Class frmMain
         '
         Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
+        'cbContributors
+        '
+        Me.cbContributors.FormattingEnabled = True
+        Me.cbContributors.Location = New System.Drawing.Point(279, 17)
+        Me.cbContributors.Name = "cbContributors"
+        Me.cbContributors.Size = New System.Drawing.Size(143, 21)
+        Me.cbContributors.TabIndex = 17
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(417, 354)
+        Me.ClientSize = New System.Drawing.Size(556, 354)
+        Me.Controls.Add(Me.cbContributors)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.txtContributor)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lblInstructions)
         Me.Controls.Add(Me.Label7)
@@ -242,7 +243,7 @@ Partial Class frmMain
     Friend WithEvents lblInstructions As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents btnAdd As System.Windows.Forms.Button
-    Friend WithEvents txtContributor As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents bs As System.Windows.Forms.BindingSource
+    Friend WithEvents cbContributors As System.Windows.Forms.ComboBox
 End Class

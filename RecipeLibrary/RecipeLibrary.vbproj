@@ -71,6 +71,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityLog.vb" />
     <Compile Include="App.vb" />
     <Compile Include="Category.vb" />
     <Compile Include="Contributor.vb" />
@@ -84,6 +85,18 @@
       <DependentUpon>201310241826140_RemoveTempClass.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201310241826140_RemoveTempClass.vb" />
+    <Compile Include="Migrations\201310251326010_RecipeModelAddDates.Designer.vb">
+      <DependentUpon>201310251326010_RecipeModelAddDates.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310251326010_RecipeModelAddDates.vb" />
+    <Compile Include="Migrations\201310251421499_AddActivityClass.Designer.vb">
+      <DependentUpon>201310251421499_AddActivityClass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310251421499_AddActivityClass.vb" />
+    <Compile Include="Migrations\201310251426095_201310251421499_AddActivityClass.Designer.vb">
+      <DependentUpon>201310251426095_201310251421499_AddActivityClass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310251426095_201310251421499_AddActivityClass.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -113,6 +126,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310241826140_RemoveTempClass.resx">
       <DependentUpon>201310241826140_RemoveTempClass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310251326010_RecipeModelAddDates.resx">
+      <DependentUpon>201310251326010_RecipeModelAddDates.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310251421499_AddActivityClass.resx">
+      <DependentUpon>201310251421499_AddActivityClass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310251426095_201310251421499_AddActivityClass.resx">
+      <DependentUpon>201310251426095_201310251421499_AddActivityClass.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

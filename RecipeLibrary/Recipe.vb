@@ -9,8 +9,8 @@ Public Class Recipe
     Public Property CookTime As Integer
     Public Property SourceURL As String
 
-    Public Property FirstAdded As Date
-    Public Property LastUpdated As Date
+    Public Property FirstAdded As Nullable(Of DateTime)
+    Public Property LastUpdated As Nullable(Of DateTime)
 
     Public Property CategoryID As Integer
     Public Overridable Property Category As Category
@@ -21,7 +21,7 @@ Public Class Recipe
     Public Property ContributorID As Integer
     Public Overridable Property Contributor As Contributor
 
-    Public Overridable Property Ingredients As ICollection(Of IngredientLine) = New HashSet(Of IngredientLine)
+    Public Overridable Property Ingredients As ICollection(Of IngredientLine)
     <Schema.NotMapped> _
     Public ReadOnly Property IngredientsBlock As String
         Get
@@ -36,6 +36,10 @@ Public Class Recipe
             End If
         End Get
     End Property
+    Public Sub New()
+        Me.LastUpdated = Now
+        Me.Ingredients = New HashSet(Of IngredientLine)
+    End Sub
     Public Sub AddIngredientsV2(aBlock As String)
         Dim p As IngredientParser = New IngredientParser
         Dim theList As List(Of IngredientLine) = p.ParseBlock(aBlock)

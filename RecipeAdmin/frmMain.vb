@@ -7,12 +7,21 @@ Public Class frmMain
             .DataSource = theApp.Category_Get_All
             .DisplayMember = "Description"
             .ValueMember = "CategoryID"
+            .SelectedIndex = 0
         End With
 
         With cbServing
             .DataSource = theApp.Serving_Get_All
             .DisplayMember = "Description"
             .ValueMember = "ServingID"
+            .SelectedIndex = 0
+        End With
+
+        With cbContributors
+            .DataSource = theApp.Contributor_Get_All
+            .DisplayMember = "Name"
+            .ValueMember = "ContributorID"
+            .SelectedIndex = 0
         End With
 
     End Sub
@@ -22,12 +31,12 @@ Public Class frmMain
         With r
             .AddIngredients(txtIngredients.Text)
             .Title = txtTitle.Text
-            .PrepareTime = txtPrepTime.Text
-            .CookTime = txtCookTime.Text
-            .Contributor = theApp.Contributor_Get_By_Email(txtContributor.Text)
+            .PrepareTime = IIf(txtPrepTime.Text = String.Empty, "0", txtPrepTime.Text)
+            .CookTime = IIf(txtCookTime.Text = String.Empty, "0", txtCookTime.Text)
+            .ContributorID = cbContributors.SelectedValue
             .CategoryID = cbCategory.SelectedValue
             .ServingID = cbServing.SelectedValue
-            .Instructions = lblInstructions.Text
+            .Instructions = txtInstructions.Text
 
         End With
         theApp.Recipe_Insert(r)

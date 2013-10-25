@@ -12,6 +12,7 @@ Public Class RecipeDB
     Public Property Ratings As DbSet(Of Rating)
     Public Property Ingredients As DbSet(Of IngredientLine)
     Public Property Units As DbSet(Of Unit)
+    Public Property ActivityLogs As DbSet(Of ActivityLog)
     Public Sub New()
         MyBase.New("RecipeDB")
     End Sub
