@@ -9,6 +9,9 @@ Public Class Recipe
     Public Property CookTime As Integer
     Public Property SourceURL As String
 
+    Public Property FirstAdded As Date
+    Public Property LastUpdated As Date
+
     Public Property CategoryID As Integer
     Public Overridable Property Category As Category
 
