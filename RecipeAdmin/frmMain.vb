@@ -52,8 +52,18 @@ Public Class frmMain
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim r As Recipe = bs.DataSource
-        r.AddIngredients(txtIngredients.Text)
+        ' r.AddIngredients(txtIngredients.Text)
         theApp.Recipe_Update(r)
+        theApp.Save()
+    End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        If MsgBox("Are you sure?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Delete Recipe") = MsgBoxResult.Yes Then
+            Dim r As Recipe = bs.DataSource
+            theApp.Recipe_Delete(r)
+            theApp.Save()
+            bs.DataSource = Nothing
+        End If
+        
     End Sub
 End Class

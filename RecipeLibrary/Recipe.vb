@@ -23,7 +23,7 @@ Public Class Recipe
 
     Public Overridable Property Ingredients As ICollection(Of IngredientLine)
     <Schema.NotMapped> _
-    Public ReadOnly Property IngredientsBlock As String
+    Public Property IngredientsBlock As String
         Get
             If Me.Ingredients.Count > 0 Then
                 Dim theString As String = String.Empty
@@ -35,6 +35,9 @@ Public Class Recipe
                 Return String.Empty
             End If
         End Get
+        Set(value As String)
+            Me.AddIngredients(value)
+        End Set
     End Property
     Public Sub New()
         Me.LastUpdated = Now

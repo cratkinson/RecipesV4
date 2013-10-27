@@ -42,6 +42,7 @@ Partial Class frmMain
         Me.Button1 = New System.Windows.Forms.Button()
         Me.cbContributors = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -209,11 +210,21 @@ Partial Class frmMain
         Me.Button2.Text = "Update"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(384, 46)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 19
+        Me.Button3.Text = "Delete"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(556, 354)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.cbContributors)
         Me.Controls.Add(Me.Button1)
@@ -258,4 +269,5 @@ Partial Class frmMain
     Friend WithEvents bs As System.Windows.Forms.BindingSource
     Friend WithEvents cbContributors As System.Windows.Forms.ComboBox
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class
