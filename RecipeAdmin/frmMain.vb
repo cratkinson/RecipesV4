@@ -66,4 +66,20 @@ Public Class frmMain
         End If
         
     End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+    Private Sub ToolStripComboBox1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub bs_CurrentChanged(sender As Object, e As EventArgs) Handles bs.CurrentChanged
+        Debug.WriteLine("bs_CurrentChanged")
+    End Sub
+
+    Private Sub bs_CurrentItemChanged(sender As Object, e As EventArgs) Handles bs.CurrentItemChanged
+        Debug.WriteLine("bs_CurrentItemChanged")
+    End Sub
 End Class

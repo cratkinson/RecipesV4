@@ -24,7 +24,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,27 +42,32 @@ Partial Class frmMain
         Me.cbContributors = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.myMenu = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.myMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbCategory
         '
         Me.cbCategory.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.bs, "CategoryID", True))
         Me.cbCategory.FormattingEnabled = True
-        Me.cbCategory.Location = New System.Drawing.Point(20, 56)
+        Me.cbCategory.Location = New System.Drawing.Point(20, 92)
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
-        '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
         Me.cbServing.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.bs, "ServingID", True))
         Me.cbServing.FormattingEnabled = True
-        Me.cbServing.Location = New System.Drawing.Point(147, 56)
+        Me.cbServing.Location = New System.Drawing.Point(147, 92)
         Me.cbServing.Name = "cbServing"
         Me.cbServing.Size = New System.Drawing.Size(121, 21)
         Me.cbServing.TabIndex = 1
@@ -71,7 +75,7 @@ Partial Class frmMain
         'txtTitle
         '
         Me.txtTitle.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Title", True))
-        Me.txtTitle.Location = New System.Drawing.Point(20, 18)
+        Me.txtTitle.Location = New System.Drawing.Point(20, 54)
         Me.txtTitle.Name = "txtTitle"
         Me.txtTitle.Size = New System.Drawing.Size(248, 20)
         Me.txtTitle.TabIndex = 2
@@ -79,7 +83,7 @@ Partial Class frmMain
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(29, 2)
+        Me.Label1.Location = New System.Drawing.Point(29, 38)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(27, 13)
         Me.Label1.TabIndex = 3
@@ -88,7 +92,7 @@ Partial Class frmMain
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(29, 41)
+        Me.Label2.Location = New System.Drawing.Point(29, 77)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 4
@@ -97,7 +101,7 @@ Partial Class frmMain
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(151, 41)
+        Me.Label3.Location = New System.Drawing.Point(151, 77)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(48, 13)
         Me.Label3.TabIndex = 5
@@ -106,7 +110,7 @@ Partial Class frmMain
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(151, 80)
+        Me.Label4.Location = New System.Drawing.Point(151, 116)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(58, 13)
         Me.Label4.TabIndex = 7
@@ -115,7 +119,7 @@ Partial Class frmMain
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(29, 80)
+        Me.Label5.Location = New System.Drawing.Point(29, 116)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(87, 13)
         Me.Label5.TabIndex = 6
@@ -124,7 +128,7 @@ Partial Class frmMain
         'txtPrepTime
         '
         Me.txtPrepTime.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "PrepareTime", True))
-        Me.txtPrepTime.Location = New System.Drawing.Point(20, 96)
+        Me.txtPrepTime.Location = New System.Drawing.Point(20, 132)
         Me.txtPrepTime.Name = "txtPrepTime"
         Me.txtPrepTime.Size = New System.Drawing.Size(121, 20)
         Me.txtPrepTime.TabIndex = 8
@@ -133,7 +137,7 @@ Partial Class frmMain
         'txtCookTime
         '
         Me.txtCookTime.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "CookTime", True))
-        Me.txtCookTime.Location = New System.Drawing.Point(147, 96)
+        Me.txtCookTime.Location = New System.Drawing.Point(147, 132)
         Me.txtCookTime.Name = "txtCookTime"
         Me.txtCookTime.Size = New System.Drawing.Size(121, 20)
         Me.txtCookTime.TabIndex = 9
@@ -142,7 +146,7 @@ Partial Class frmMain
         'txtIngredients
         '
         Me.txtIngredients.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "IngredientsBlock", True))
-        Me.txtIngredients.Location = New System.Drawing.Point(12, 136)
+        Me.txtIngredients.Location = New System.Drawing.Point(12, 172)
         Me.txtIngredients.Multiline = True
         Me.txtIngredients.Name = "txtIngredients"
         Me.txtIngredients.Size = New System.Drawing.Size(256, 207)
@@ -151,7 +155,7 @@ Partial Class frmMain
         'txtInstructions
         '
         Me.txtInstructions.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Instructions", True))
-        Me.txtInstructions.Location = New System.Drawing.Point(279, 135)
+        Me.txtInstructions.Location = New System.Drawing.Point(279, 171)
         Me.txtInstructions.Multiline = True
         Me.txtInstructions.Name = "txtInstructions"
         Me.txtInstructions.Size = New System.Drawing.Size(249, 207)
@@ -160,7 +164,7 @@ Partial Class frmMain
         'lblInstructions
         '
         Me.lblInstructions.AutoSize = True
-        Me.lblInstructions.Location = New System.Drawing.Point(372, 119)
+        Me.lblInstructions.Location = New System.Drawing.Point(372, 155)
         Me.lblInstructions.Name = "lblInstructions"
         Me.lblInstructions.Size = New System.Drawing.Size(61, 13)
         Me.lblInstructions.TabIndex = 13
@@ -169,7 +173,7 @@ Partial Class frmMain
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(117, 120)
+        Me.Label7.Location = New System.Drawing.Point(117, 156)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(59, 13)
         Me.Label7.TabIndex = 12
@@ -177,7 +181,7 @@ Partial Class frmMain
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(303, 75)
+        Me.btnAdd.Location = New System.Drawing.Point(303, 111)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 14
@@ -186,7 +190,7 @@ Partial Class frmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(303, 46)
+        Me.Button1.Location = New System.Drawing.Point(303, 82)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 16
@@ -196,14 +200,14 @@ Partial Class frmMain
         'cbContributors
         '
         Me.cbContributors.FormattingEnabled = True
-        Me.cbContributors.Location = New System.Drawing.Point(279, 17)
+        Me.cbContributors.Location = New System.Drawing.Point(303, 53)
         Me.cbContributors.Name = "cbContributors"
         Me.cbContributors.Size = New System.Drawing.Size(143, 21)
         Me.cbContributors.TabIndex = 17
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(384, 75)
+        Me.Button2.Location = New System.Drawing.Point(384, 111)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 18
@@ -212,18 +216,69 @@ Partial Class frmMain
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(384, 46)
+        Me.Button3.Location = New System.Drawing.Point(384, 82)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 19
         Me.Button3.Text = "Delete"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'myMenu
+        '
+        Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1})
+        Me.myMenu.Location = New System.Drawing.Point(0, 0)
+        Me.myMenu.Name = "myMenu"
+        Me.myMenu.Size = New System.Drawing.Size(556, 24)
+        Me.myMenu.TabIndex = 20
+        Me.myMenu.Text = "MenuStrip1"
+        '
+        'FileToolStripMenuItem
+        '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.ToolStripSeparator1, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "&File"
+        '
+        'PrintToolStripMenuItem
+        '
+        Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
+        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
+        Me.PrintToolStripMenuItem.Text = "&Edit"
+        '
+        'PrintToolStripMenuItem1
+        '
+        Me.PrintToolStripMenuItem1.Name = "PrintToolStripMenuItem1"
+        Me.PrintToolStripMenuItem1.Size = New System.Drawing.Size(44, 20)
+        Me.PrintToolStripMenuItem1.Text = "&Print"
+        '
+        'NewToolStripMenuItem
+        '
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Text = "&New"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(556, 354)
+        Me.ClientSize = New System.Drawing.Size(556, 411)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.cbContributors)
@@ -243,9 +298,13 @@ Partial Class frmMain
         Me.Controls.Add(Me.txtTitle)
         Me.Controls.Add(Me.cbServing)
         Me.Controls.Add(Me.cbCategory)
+        Me.Controls.Add(Me.myMenu)
+        Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
-        Me.Text = "frmMain"
+        Me.Text = "Recipe Console"
         CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.myMenu.ResumeLayout(False)
+        Me.myMenu.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -270,4 +329,11 @@ Partial Class frmMain
     Friend WithEvents cbContributors As System.Windows.Forms.ComboBox
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents myMenu As System.Windows.Forms.MenuStrip
+    Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PrintToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PrintToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 End Class
