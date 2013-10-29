@@ -45,7 +45,7 @@ Public Class frmMain
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(6)
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(7)
         bs.DataSource = r
 
     End Sub
@@ -81,5 +81,26 @@ Public Class frmMain
 
     Private Sub bs_CurrentItemChanged(sender As Object, e As EventArgs) Handles bs.CurrentItemChanged
         Debug.WriteLine("bs_CurrentItemChanged")
+    End Sub
+
+    Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
+        Dim r As New Recipe
+        r.ContributorID = cbContributors.SelectedValue
+        r.CategoryID = cbCategory.SelectedValue
+        r.ServingID = cbServing.SelectedValue
+
+        bs.DataSource = r
+
+    End Sub
+
+    Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
+        Dim r As Recipe = bs.DataSource
+        If r.RecipeID = 0 Then
+            theApp.Recipe_Insert(r)
+        Else
+            theApp.Recipe_Update(r)
+        End If
+        theApp.Save()
+
     End Sub
 End Class

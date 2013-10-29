@@ -34,7 +34,6 @@ Partial Class frmMain
         Me.txtPrepTime = New System.Windows.Forms.TextBox()
         Me.txtCookTime = New System.Windows.Forms.TextBox()
         Me.txtIngredients = New System.Windows.Forms.TextBox()
-        Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.lblInstructions = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
@@ -42,16 +41,18 @@ Partial Class frmMain
         Me.cbContributors = New System.Windows.Forms.ComboBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.myMenu = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.myMenu.SuspendLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -152,15 +153,6 @@ Partial Class frmMain
         Me.txtIngredients.Size = New System.Drawing.Size(256, 207)
         Me.txtIngredients.TabIndex = 10
         '
-        'txtInstructions
-        '
-        Me.txtInstructions.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Instructions", True))
-        Me.txtInstructions.Location = New System.Drawing.Point(279, 171)
-        Me.txtInstructions.Multiline = True
-        Me.txtInstructions.Name = "txtInstructions"
-        Me.txtInstructions.Size = New System.Drawing.Size(249, 207)
-        Me.txtInstructions.TabIndex = 11
-        '
         'lblInstructions
         '
         Me.lblInstructions.AutoSize = True
@@ -223,10 +215,6 @@ Partial Class frmMain
         Me.Button3.Text = "Delete"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
         'myMenu
         '
         Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1})
@@ -243,8 +231,28 @@ Partial Class frmMain
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
+        'NewToolStripMenuItem
+        '
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.NewToolStripMenuItem.Text = "&New"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(138, 6)
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
+        Me.ExitToolStripMenuItem.Text = "E&xit"
+        '
         'PrintToolStripMenuItem
         '
+        Me.PrintToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaveToolStripMenuItem})
         Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
         Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.PrintToolStripMenuItem.Text = "&Edit"
@@ -255,30 +263,31 @@ Partial Class frmMain
         Me.PrintToolStripMenuItem1.Size = New System.Drawing.Size(44, 20)
         Me.PrintToolStripMenuItem1.Text = "&Print"
         '
-        'NewToolStripMenuItem
+        'SaveToolStripMenuItem
         '
-        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
-        Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.NewToolStripMenuItem.Text = "&New"
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
+        Me.SaveToolStripMenuItem.Text = "&Save"
         '
-        'ToolStripSeparator1
+        'bs
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
-        'ExitToolStripMenuItem
+        'txtInstructions
         '
-        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ExitToolStripMenuItem.Text = "E&xit"
+        Me.txtInstructions.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "Instructions", True))
+        Me.txtInstructions.Location = New System.Drawing.Point(303, 172)
+        Me.txtInstructions.Multiline = True
+        Me.txtInstructions.Name = "txtInstructions"
+        Me.txtInstructions.Size = New System.Drawing.Size(241, 207)
+        Me.txtInstructions.TabIndex = 21
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(556, 411)
+        Me.Controls.Add(Me.txtInstructions)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.cbContributors)
@@ -286,7 +295,6 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lblInstructions)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.txtInstructions)
         Me.Controls.Add(Me.txtIngredients)
         Me.Controls.Add(Me.txtCookTime)
         Me.Controls.Add(Me.txtPrepTime)
@@ -302,9 +310,9 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -320,7 +328,6 @@ Partial Class frmMain
     Friend WithEvents txtPrepTime As System.Windows.Forms.TextBox
     Friend WithEvents txtCookTime As System.Windows.Forms.TextBox
     Friend WithEvents txtIngredients As System.Windows.Forms.TextBox
-    Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
     Friend WithEvents lblInstructions As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents btnAdd As System.Windows.Forms.Button
@@ -336,4 +343,6 @@ Partial Class frmMain
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PrintToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PrintToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
 End Class
