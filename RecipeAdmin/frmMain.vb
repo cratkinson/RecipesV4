@@ -45,7 +45,8 @@ Public Class frmMain
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(8)
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(6)
+        chkFavorite.Checked = theApp.IsFavorite(cbContributors.SelectedValue, r.RecipeID)
         bs.DataSource = r
 
     End Sub
@@ -64,7 +65,7 @@ Public Class frmMain
             theApp.Save()
             bs.DataSource = Nothing
         End If
-        
+
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -103,5 +104,23 @@ Public Class frmMain
         End If
         theApp.Save()
 
+    End Sub
+
+    Private Sub chkFavorite_CheckedChanged(sender As Object, e As EventArgs) Handles chkFavorite.CheckedChanged
+        
+    End Sub
+
+    Private Sub chkFavorite_Click(sender As Object, e As EventArgs) Handles chkFavorite.Click
+        If Not bs.DataSource Is Nothing Then
+            Dim r As Recipe = bs.DataSource
+            If r.RecipeID <> 0 Then
+                If chkFavorite.Checked = True Then
+                    theApp.MakeFavorite(cbContributors.SelectedValue, r.RecipeID)
+                Else
+                    theApp.RemoveFavorite(cbContributors.SelectedValue, r.RecipeID)
+                End If
+                theApp.Save()
+            End If
+        End If
     End Sub
 End Class

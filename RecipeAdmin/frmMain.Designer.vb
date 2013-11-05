@@ -24,7 +24,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -51,8 +50,10 @@ Partial Class frmMain
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.txtInstructions = New System.Windows.Forms.TextBox()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.myMenu.SuspendLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -63,10 +64,6 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
-        '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -239,19 +236,19 @@ Partial Class frmMain
         '
         Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
         Me.NewToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
-        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.NewToolStripMenuItem.Text = "&New"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(138, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'PrintToolStripMenuItem
@@ -265,7 +262,7 @@ Partial Class frmMain
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.SaveToolStripMenuItem.Text = "&Save"
         '
         'PrintToolStripMenuItem1
@@ -283,11 +280,26 @@ Partial Class frmMain
         Me.txtInstructions.Size = New System.Drawing.Size(241, 207)
         Me.txtInstructions.TabIndex = 21
         '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'chkFavorite
+        '
+        Me.chkFavorite.AutoSize = True
+        Me.chkFavorite.Location = New System.Drawing.Point(463, 149)
+        Me.chkFavorite.Name = "chkFavorite"
+        Me.chkFavorite.Size = New System.Drawing.Size(64, 17)
+        Me.chkFavorite.TabIndex = 22
+        Me.chkFavorite.Text = "Favorite"
+        Me.chkFavorite.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(556, 411)
+        Me.Controls.Add(Me.chkFavorite)
         Me.Controls.Add(Me.txtInstructions)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -311,9 +323,9 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -346,4 +358,5 @@ Partial Class frmMain
     Friend WithEvents PrintToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
+    Friend WithEvents chkFavorite As System.Windows.Forms.CheckBox
 End Class

@@ -34,6 +34,10 @@
     Sub Recipe_Update(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
 
+    Function IsFavorite(ContributorID As Integer, RecipeID As Integer) As Boolean
+    Sub MakeFavorite(ContributorID As Integer, RecipeID As Integer)
+    Sub RemoveFavorite(ContributorID As Integer, RecipeID As Integer)
+
     Sub Save()
 
 
@@ -153,6 +157,23 @@ Public Class App
     End Sub
     Sub Serving_Delete(aServing As Serving) Implements iApp.Serving_Delete
         _db.Servings.Remove(aServing)
+    End Sub
+    '--------------------------------------------------------------------
+    ' Favorites
+    '--------------------------------------------------------------------
+    Function IsFavorite(ContributorID As Integer, RecipeID As Integer) As Boolean Implements iApp.IsFavorite
+        Return Not _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID) Is Nothing
+    End Function
+    Sub MakeFavorite(ContributorID As Integer, RecipeID As Integer) Implements iApp.MakeFavorite
+        If _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID) Is Nothing Then
+            _db.Favorites.Add(New Favorite With {.ContributorID = ContributorID, .RecipeID = RecipeID})
+        End If
+    End Sub
+    Sub RemoveFavorite(ContributorID As Integer, RecipeID As Integer) Implements iApp.RemoveFavorite
+        Dim fav As Favorite = _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID)
+        If Not fav Is Nothing Then
+            _db.Favorites.Remove(fav)
+        End If
     End Sub
     '--------------------------------------------------------------------
     ' Private Subs & Functions
