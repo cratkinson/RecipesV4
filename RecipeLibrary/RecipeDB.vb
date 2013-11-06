@@ -13,6 +13,8 @@ Public Class RecipeDB
     Public Property Ingredients As DbSet(Of IngredientLine)
     Public Property Units As DbSet(Of Unit)
     Public Property ActivityLogs As DbSet(Of ActivityLog)
+    Public Property Notes As DbSet(Of Note)
+
     Public Sub New()
         MyBase.New("RecipeDB")
     End Sub

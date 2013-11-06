@@ -46,7 +46,7 @@ Public Class frmMain
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim r As Recipe = theApp.Recipe_Get_By_ID(6)
-        chkFavorite.Checked = theApp.IsFavorite(cbContributors.SelectedValue, r.RecipeID)
+        chkFavorite.Checked = theApp.Favorite_Exists(cbContributors.SelectedValue, r.RecipeID)
         bs.DataSource = r
 
     End Sub
@@ -107,7 +107,7 @@ Public Class frmMain
     End Sub
 
     Private Sub chkFavorite_CheckedChanged(sender As Object, e As EventArgs) Handles chkFavorite.CheckedChanged
-        
+
     End Sub
 
     Private Sub chkFavorite_Click(sender As Object, e As EventArgs) Handles chkFavorite.Click
@@ -115,9 +115,9 @@ Public Class frmMain
             Dim r As Recipe = bs.DataSource
             If r.RecipeID <> 0 Then
                 If chkFavorite.Checked = True Then
-                    theApp.MakeFavorite(cbContributors.SelectedValue, r.RecipeID)
+                    theApp.Favorite_Insert(cbContributors.SelectedValue, r.RecipeID)
                 Else
-                    theApp.RemoveFavorite(cbContributors.SelectedValue, r.RecipeID)
+                    theApp.Favorite_Delete(cbContributors.SelectedValue, r.RecipeID)
                 End If
                 theApp.Save()
             End If

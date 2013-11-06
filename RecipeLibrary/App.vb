@@ -34,9 +34,14 @@
     Sub Recipe_Update(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
 
-    Function IsFavorite(ContributorID As Integer, RecipeID As Integer) As Boolean
-    Sub MakeFavorite(ContributorID As Integer, RecipeID As Integer)
-    Sub RemoveFavorite(ContributorID As Integer, RecipeID As Integer)
+    Function Favorite_Exists(ContributorID As Integer, RecipeID As Integer) As Boolean
+    Sub Favorite_Insert(ContributorID As Integer, RecipeID As Integer)
+    Sub Favorite_Delete(ContributorID As Integer, RecipeID As Integer)
+
+    Function Note_Get(ContributorID As Integer, RecipeID As Integer) As Note
+    Sub Note_Insert(aNote As Note)
+    Sub Note_Update(aNote As Note)
+    Sub Note_Delete(aNote As Note)
 
     Sub Save()
 
@@ -99,7 +104,7 @@ Public Class App
     Public Sub Unit_Delete(aUnit As Unit) Implements iApp.Unit_Delete
         _db.Units.Remove(aUnit)
     End Sub
-    
+
     '--------------------------------------------------------------------
     ' Contributors
     '--------------------------------------------------------------------
@@ -161,20 +166,34 @@ Public Class App
     '--------------------------------------------------------------------
     ' Favorites
     '--------------------------------------------------------------------
-    Function IsFavorite(ContributorID As Integer, RecipeID As Integer) As Boolean Implements iApp.IsFavorite
+    Function Favorite_Exists(ContributorID As Integer, RecipeID As Integer) As Boolean Implements iApp.Favorite_Exists
         Return Not _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID) Is Nothing
     End Function
-    Sub MakeFavorite(ContributorID As Integer, RecipeID As Integer) Implements iApp.MakeFavorite
+    Sub Favorite_Insert(ContributorID As Integer, RecipeID As Integer) Implements iApp.Favorite_Insert
         If _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID) Is Nothing Then
             _db.Favorites.Add(New Favorite With {.ContributorID = ContributorID, .RecipeID = RecipeID})
         End If
     End Sub
-    Sub RemoveFavorite(ContributorID As Integer, RecipeID As Integer) Implements iApp.RemoveFavorite
+    Sub Favorite_Delete(ContributorID As Integer, RecipeID As Integer) Implements iApp.Favorite_Delete
         Dim fav As Favorite = _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID)
         If Not fav Is Nothing Then
             _db.Favorites.Remove(fav)
         End If
     End Sub
+    Function Note_Get(ContributorID As Integer, RecipeID As Integer) As Note Implements iApp.Note_Get
+        Return _db.Notes.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID)
+
+    End Function
+    Sub Note_Insert(aNote As Note) Implements iApp.Note_Insert
+        _db.Notes.Add(aNote)
+    End Sub
+    Sub Note_Update(aNote As Note) Implements iApp.Note_Update
+        _db.Entry(aNote).State = Entity.EntityState.Modified
+    End Sub
+    Sub Note_Delete(aNote As Note) Implements iApp.Note_Delete
+        _db.Notes.Remove(aNote)
+    End Sub
+
     '--------------------------------------------------------------------
     ' Private Subs & Functions
     '--------------------------------------------------------------------

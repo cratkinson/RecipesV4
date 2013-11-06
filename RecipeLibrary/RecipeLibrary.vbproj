@@ -101,6 +101,10 @@
       <DependentUpon>201310252043246_ActivtiesTableModify.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201310252043246_ActivtiesTableModify.vb" />
+    <Compile Include="Migrations\201311061420264_AddNotes.Designer.vb">
+      <DependentUpon>201311061420264_AddNotes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311061420264_AddNotes.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -117,6 +121,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Note.vb" />
     <Compile Include="Parser.vb" />
     <Compile Include="Rating.vb" />
     <Compile Include="Recipe.vb" />
@@ -142,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310252043246_ActivtiesTableModify.resx">
       <DependentUpon>201310252043246_ActivtiesTableModify.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311061420264_AddNotes.resx">
+      <DependentUpon>201311061420264_AddNotes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
