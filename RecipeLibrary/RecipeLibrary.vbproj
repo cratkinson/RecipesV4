@@ -105,6 +105,10 @@
       <DependentUpon>201311061420264_AddNotes.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201311061420264_AddNotes.vb" />
+    <Compile Include="Migrations\201311062118495_LinkContribToFavNoteRating.Designer.vb">
+      <DependentUpon>201311062118495_LinkContribToFavNoteRating.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311062118495_LinkContribToFavNoteRating.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311061420264_AddNotes.resx">
       <DependentUpon>201311061420264_AddNotes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311062118495_LinkContribToFavNoteRating.resx">
+      <DependentUpon>201311062118495_LinkContribToFavNoteRating.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

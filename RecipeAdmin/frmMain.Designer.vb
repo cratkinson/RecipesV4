@@ -24,6 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -50,10 +51,10 @@ Partial Class frmMain
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.txtInstructions = New System.Windows.Forms.TextBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
-        Me.myMenu.SuspendLayout()
+        Me.txtContributor = New System.Windows.Forms.TextBox()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.myMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -64,6 +65,10 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -193,7 +198,7 @@ Partial Class frmMain
         'cbContributors
         '
         Me.cbContributors.FormattingEnabled = True
-        Me.cbContributors.Location = New System.Drawing.Point(303, 53)
+        Me.cbContributors.Location = New System.Drawing.Point(303, 30)
         Me.cbContributors.Name = "cbContributors"
         Me.cbContributors.Size = New System.Drawing.Size(143, 21)
         Me.cbContributors.TabIndex = 17
@@ -280,10 +285,6 @@ Partial Class frmMain
         Me.txtInstructions.Size = New System.Drawing.Size(241, 207)
         Me.txtInstructions.TabIndex = 21
         '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
         'chkFavorite
         '
         Me.chkFavorite.AutoSize = True
@@ -294,11 +295,19 @@ Partial Class frmMain
         Me.chkFavorite.Text = "Favorite"
         Me.chkFavorite.UseVisualStyleBackColor = True
         '
+        'txtContributor
+        '
+        Me.txtContributor.Location = New System.Drawing.Point(303, 54)
+        Me.txtContributor.Name = "txtContributor"
+        Me.txtContributor.Size = New System.Drawing.Size(143, 20)
+        Me.txtContributor.TabIndex = 23
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(556, 411)
+        Me.Controls.Add(Me.txtContributor)
         Me.Controls.Add(Me.chkFavorite)
         Me.Controls.Add(Me.txtInstructions)
         Me.Controls.Add(Me.Button3)
@@ -323,9 +332,9 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -359,4 +368,5 @@ Partial Class frmMain
     Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
     Friend WithEvents chkFavorite As System.Windows.Forms.CheckBox
+    Friend WithEvents txtContributor As System.Windows.Forms.TextBox
 End Class

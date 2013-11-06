@@ -1,6 +1,7 @@
 ﻿Imports RecipeLibrary
 Public Class frmMain
     Private theApp As App = New App
+    Private theUser As Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         With cbCategory
@@ -24,6 +25,10 @@ Public Class frmMain
             .SelectedIndex = 0
         End With
 
+        Dim b As New Binding("Text", bs, "Contributor.Name")
+        txtContributor.DataBindings.Add(b)
+
+
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -33,7 +38,7 @@ Public Class frmMain
             .Title = txtTitle.Text
             .PrepareTime = IIf(txtPrepTime.Text = String.Empty, "0", txtPrepTime.Text)
             .CookTime = IIf(txtCookTime.Text = String.Empty, "0", txtCookTime.Text)
-            .ContributorID = cbContributors.SelectedValue
+            .ContributorID = theUser.ContributorID
             .CategoryID = cbCategory.SelectedValue
             .ServingID = cbServing.SelectedValue
             .Instructions = txtInstructions.Text
@@ -45,8 +50,10 @@ Public Class frmMain
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(6)
-        chkFavorite.Checked = theApp.Favorite_Exists(cbContributors.SelectedValue, r.RecipeID)
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(5)
+
+        chkFavorite.Checked = theUser.IsAFavorite(r)
+
         bs.DataSource = r
 
     End Sub
@@ -76,6 +83,10 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub bs_BindingComplete(sender As Object, e As BindingCompleteEventArgs) Handles bs.BindingComplete
+        Debug.WriteLine("bs_BindingComplete")
+    End Sub
+
     Private Sub bs_CurrentChanged(sender As Object, e As EventArgs) Handles bs.CurrentChanged
         Debug.WriteLine("bs_CurrentChanged")
     End Sub
@@ -86,7 +97,7 @@ Public Class frmMain
 
     Private Sub NewToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem.Click
         Dim r As New Recipe
-        r.ContributorID = cbContributors.SelectedValue
+        r.Contributor = theUser
         r.CategoryID = cbCategory.SelectedValue
         r.ServingID = cbServing.SelectedValue
 
@@ -111,16 +122,18 @@ Public Class frmMain
     End Sub
 
     Private Sub chkFavorite_Click(sender As Object, e As EventArgs) Handles chkFavorite.Click
-        If Not bs.DataSource Is Nothing Then
-            Dim r As Recipe = bs.DataSource
-            If r.RecipeID <> 0 Then
-                If chkFavorite.Checked = True Then
-                    theApp.Favorite_Insert(cbContributors.SelectedValue, r.RecipeID)
-                Else
-                    theApp.Favorite_Delete(cbContributors.SelectedValue, r.RecipeID)
-                End If
-                theApp.Save()
+        Dim r As Recipe = bs.DataSource
+        If r.RecipeID <> 0 Then
+            If chkFavorite.Checked = True Then
+
+                theUser.Favorites.Add(New Favorite With {.Recipe = r})
+                'theApp.Favorite_Insert(cbContributors.SelectedValue, r.RecipeID)
+            Else
+                theUser.Favorites.Remove(New Favorite With {.Recipe = r})
+                'theApp.Favorite_Delete(cbContributors.SelectedValue, r.RecipeID)
             End If
+            theApp.Contributor_Update(theUser)
+            theApp.Save()
         End If
     End Sub
 End Class

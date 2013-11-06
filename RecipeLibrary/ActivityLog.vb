@@ -2,6 +2,9 @@
     Insert
     Update
     Delete
+    Favorite
+    Note
+    Rate
 End Enum
 Public Class ActivityLog
     Public Property ActivityLogID As Integer
