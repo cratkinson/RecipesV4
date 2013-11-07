@@ -6,14 +6,14 @@ Imports System.Resources
 
 Namespace Migrations
     <GeneratedCode("EntityFramework.Migrations", "6.0.1-21010")>
-    Public NotInheritable Partial Class LinkContribToFavNoteRating
+    Public NotInheritable Partial Class UpdateFavKey
         Implements IMigrationMetadata
     
-        Private ReadOnly Resources As New ResourceManager(GetType(LinkContribToFavNoteRating))
+        Private ReadOnly Resources As New ResourceManager(GetType(UpdateFavKey))
         
         Private ReadOnly Property IMigrationMetadata_Id() As String Implements IMigrationMetadata.Id
             Get
-                Return "201311062118495_LinkContribToFavNoteRating"
+                Return "201311071445541_UpdateFavKey"
             End Get
         End Property
         

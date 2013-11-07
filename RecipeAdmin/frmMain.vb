@@ -125,12 +125,12 @@ Public Class frmMain
         Dim r As Recipe = bs.DataSource
         If r.RecipeID <> 0 Then
             If chkFavorite.Checked = True Then
-
-                theUser.Favorites.Add(New Favorite With {.Recipe = r})
-                'theApp.Favorite_Insert(cbContributors.SelectedValue, r.RecipeID)
+                theApp.Favorite_Insert(theUser, r)
             Else
-                theUser.Favorites.Remove(New Favorite With {.Recipe = r})
-                'theApp.Favorite_Delete(cbContributors.SelectedValue, r.RecipeID)
+                Dim theFav As Favorite = theUser.Favorites.SingleOrDefault(Function(f) f.RecipeID = r.RecipeID)
+                If Not theFav Is Nothing Then
+                    theUser.Favorites.Remove(theFav)
+                End If
             End If
             theApp.Contributor_Update(theUser)
             theApp.Save()
