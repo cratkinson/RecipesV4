@@ -35,8 +35,8 @@
     Sub Recipe_Delete(aRecipe As Recipe)
 
     Function Favorite_Exists(ContributorID As Integer, RecipeID As Integer) As Boolean
-    Sub Favorite_Insert(ContributorID As Integer, RecipeID As Integer)
-    Sub Favorite_Delete(ContributorID As Integer, RecipeID As Integer)
+    Sub Favorite_Insert(theContributor As Contributor, theRecipe As Recipe)
+    Sub Favorite_Delete(theContributor As Contributor, theRecipe As Recipe)
 
     Function Note_Get(ContributorID As Integer, RecipeID As Integer) As Note
     Sub Note_Insert(aNote As Note)
@@ -169,13 +169,14 @@ Public Class App
     Function Favorite_Exists(ContributorID As Integer, RecipeID As Integer) As Boolean Implements iApp.Favorite_Exists
         Return Not _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID) Is Nothing
     End Function
-    Sub Favorite_Insert(ContributorID As Integer, RecipeID As Integer) Implements iApp.Favorite_Insert
-        If _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID) Is Nothing Then
-            _db.Favorites.Add(New Favorite With {.ContributorID = ContributorID, .RecipeID = RecipeID})
+    Sub Favorite_Insert(theContributor As Contributor, theRecipe As Recipe) Implements iApp.Favorite_Insert
+        If _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = theContributor.ContributorID And f.RecipeID = theRecipe.RecipeID) Is Nothing Then
+            '_db.Favorites.Add(New Favorite With {.ContributorID = ContributorID, .RecipeID = RecipeID})
+            _db.Favorites.Add(New Favorite With {.Contributor = theContributor, .Recipe = theRecipe})
         End If
     End Sub
-    Sub Favorite_Delete(ContributorID As Integer, RecipeID As Integer) Implements iApp.Favorite_Delete
-        Dim fav As Favorite = _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID)
+    Sub Favorite_Delete(theContributor As Contributor, theRecipe As Recipe) Implements iApp.Favorite_Delete
+        Dim fav As Favorite = _db.Favorites.SingleOrDefault(Function(f) f.ContributorID = theContributor.ContributorID And f.RecipeID = theRecipe.RecipeID)
         If Not fav Is Nothing Then
             _db.Favorites.Remove(fav)
         End If
