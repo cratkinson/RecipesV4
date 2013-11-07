@@ -124,12 +124,13 @@ Public Class frmMain
     Private Sub chkFavorite_Click(sender As Object, e As EventArgs) Handles chkFavorite.Click
         Dim r As Recipe = bs.DataSource
         If r.RecipeID <> 0 Then
-            If chkFavorite.Checked = True Then
+            Dim theFav As New Favorite With {.RecipeID = r.RecipeID, .ContributorID = theUser.ContributorID}
 
-                theUser.Favorites.Add(New Favorite With {.Recipe = r})
+            If chkFavorite.Checked = True Then
+                theUser.Favorites.Add(theFav)
                 'theApp.Favorite_Insert(cbContributors.SelectedValue, r.RecipeID)
             Else
-                theUser.Favorites.Remove(New Favorite With {.Recipe = r})
+                theUser.Favorites.Remove(theFav)
                 'theApp.Favorite_Delete(cbContributors.SelectedValue, r.RecipeID)
             End If
             theApp.Contributor_Update(theUser)
