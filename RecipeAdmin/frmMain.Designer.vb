@@ -53,6 +53,8 @@ Partial Class frmMain
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtContributor = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.myMenu.SuspendLayout()
         Me.SuspendLayout()
@@ -302,11 +304,30 @@ Partial Class frmMain
         Me.txtContributor.Size = New System.Drawing.Size(143, 20)
         Me.txtContributor.TabIndex = 23
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(12, 399)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(532, 85)
+        Me.TextBox1.TabIndex = 24
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 383)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(35, 13)
+        Me.Label6.TabIndex = 25
+        Me.Label6.Text = "Notes"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(556, 411)
+        Me.ClientSize = New System.Drawing.Size(556, 496)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.txtContributor)
         Me.Controls.Add(Me.chkFavorite)
         Me.Controls.Add(Me.txtInstructions)
@@ -369,4 +390,6 @@ Partial Class frmMain
     Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
     Friend WithEvents chkFavorite As System.Windows.Forms.CheckBox
     Friend WithEvents txtContributor As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class
