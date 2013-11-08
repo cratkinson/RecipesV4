@@ -16,4 +16,9 @@ Public Class Contributor
             Return q.Count > 0
         End Get
     End Property
+    Public ReadOnly Property HasANote(aRecipe As Recipe) As Boolean
+        Get
+            Return Me.Notes.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
+        End Get
+    End Property
 End Class

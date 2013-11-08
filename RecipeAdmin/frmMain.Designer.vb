@@ -24,7 +24,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -53,10 +52,13 @@ Partial Class frmMain
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtContributor = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtNotes = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.myMenu.SuspendLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -67,10 +69,6 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
-        '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -304,13 +302,14 @@ Partial Class frmMain
         Me.txtContributor.Size = New System.Drawing.Size(143, 20)
         Me.txtContributor.TabIndex = 23
         '
-        'TextBox1
+        'txtNotes
         '
-        Me.TextBox1.Location = New System.Drawing.Point(12, 399)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(532, 85)
-        Me.TextBox1.TabIndex = 24
+        Me.txtNotes.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bsNote, "Notes", True))
+        Me.txtNotes.Location = New System.Drawing.Point(12, 399)
+        Me.txtNotes.Multiline = True
+        Me.txtNotes.Name = "txtNotes"
+        Me.txtNotes.Size = New System.Drawing.Size(532, 85)
+        Me.txtNotes.TabIndex = 24
         '
         'Label6
         '
@@ -321,13 +320,21 @@ Partial Class frmMain
         Me.Label6.TabIndex = 25
         Me.Label6.Text = "Notes"
         '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(556, 496)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtNotes)
         Me.Controls.Add(Me.txtContributor)
         Me.Controls.Add(Me.chkFavorite)
         Me.Controls.Add(Me.txtInstructions)
@@ -353,9 +360,10 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -390,6 +398,7 @@ Partial Class frmMain
     Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
     Friend WithEvents chkFavorite As System.Windows.Forms.CheckBox
     Friend WithEvents txtContributor As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtNotes As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents bsNote As System.Windows.Forms.BindingSource
 End Class

@@ -53,6 +53,11 @@ Public Class frmMain
         Dim r As Recipe = theApp.Recipe_Get_By_ID(5)
 
         chkFavorite.Checked = theUser.IsAFavorite(r)
+        If theUser.HasANote(r) Then
+            bsNote.DataSource = theUser.Notes.SingleOrDefault(Function(f) f.RecipeID = r.RecipeID)
+        Else
+            Debug.WriteLine("")
+        End If
 
         bs.DataSource = r
 
