@@ -50,13 +50,11 @@ Public Class frmMain
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(5)
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(2) '2
 
         chkFavorite.Checked = theUser.IsAFavorite(r)
         If theUser.HasANote(r) Then
             bsNote.DataSource = theUser.Notes.SingleOrDefault(Function(f) f.RecipeID = r.RecipeID)
-        Else
-            Debug.WriteLine("")
         End If
 
         bs.DataSource = r
@@ -112,12 +110,14 @@ Public Class frmMain
 
     Private Sub SaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveToolStripMenuItem.Click
         bs.EndEdit()
+        bsNote.EndEdit()
         Dim r As Recipe = bs.DataSource
         If r.RecipeID = 0 Then
             theApp.Recipe_Insert(r)
         Else
             theApp.Recipe_Update(r)
         End If
+        theApp.Contributor_Update(theUser)
         theApp.Save()
 
     End Sub
@@ -139,6 +139,15 @@ Public Class frmMain
             End If
             theApp.Contributor_Update(theUser)
             theApp.Save()
+        End If
+    End Sub
+
+    Private Sub txtNotes_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNotes.KeyPress
+        Debug.WriteLine("txtNotes_KeyPress")
+        If bsNote.Count = 0 Then
+            Dim theNote As New Note With {.Recipe = bs.DataSource}
+            theUser.Notes.Add(theNote)
+            bsNote.DataSource = theNote
         End If
     End Sub
 End Class

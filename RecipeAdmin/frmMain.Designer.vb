@@ -24,6 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -53,11 +54,10 @@ Partial Class frmMain
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtContributor = New System.Windows.Forms.TextBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
-        Me.myMenu.SuspendLayout()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.myMenu.SuspendLayout()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -69,6 +69,10 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -311,6 +315,10 @@ Partial Class frmMain
         Me.txtNotes.Size = New System.Drawing.Size(532, 85)
         Me.txtNotes.TabIndex = 24
         '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -319,14 +327,6 @@ Partial Class frmMain
         Me.Label6.Size = New System.Drawing.Size(35, 13)
         Me.Label6.TabIndex = 25
         Me.Label6.Text = "Notes"
-        '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
-        'bsNote
-        '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
         '
         'frmMain
         '
@@ -360,9 +360,9 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
