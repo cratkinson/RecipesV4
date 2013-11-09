@@ -56,6 +56,9 @@ Partial Class frmMain
         Me.txtNotes = New System.Windows.Forms.TextBox()
         Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtURL = New System.Windows.Forms.TextBox()
+        Me.tmrWatch = New System.Windows.Forms.Timer(Me.components)
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.myMenu.SuspendLayout()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -121,7 +124,7 @@ Partial Class frmMain
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(151, 116)
+        Me.Label4.Location = New System.Drawing.Point(422, 77)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(58, 13)
         Me.Label4.TabIndex = 7
@@ -130,7 +133,7 @@ Partial Class frmMain
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(29, 116)
+        Me.Label5.Location = New System.Drawing.Point(300, 77)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(87, 13)
         Me.Label5.TabIndex = 6
@@ -139,7 +142,7 @@ Partial Class frmMain
         'txtPrepTime
         '
         Me.txtPrepTime.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "PrepareTime", True))
-        Me.txtPrepTime.Location = New System.Drawing.Point(20, 132)
+        Me.txtPrepTime.Location = New System.Drawing.Point(291, 93)
         Me.txtPrepTime.Name = "txtPrepTime"
         Me.txtPrepTime.Size = New System.Drawing.Size(121, 20)
         Me.txtPrepTime.TabIndex = 8
@@ -148,7 +151,7 @@ Partial Class frmMain
         'txtCookTime
         '
         Me.txtCookTime.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "CookTime", True))
-        Me.txtCookTime.Location = New System.Drawing.Point(147, 132)
+        Me.txtCookTime.Location = New System.Drawing.Point(418, 93)
         Me.txtCookTime.Name = "txtCookTime"
         Me.txtCookTime.Size = New System.Drawing.Size(121, 20)
         Me.txtCookTime.TabIndex = 9
@@ -183,7 +186,7 @@ Partial Class frmMain
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(303, 111)
+        Me.btnAdd.Location = New System.Drawing.Point(579, 57)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 14
@@ -192,7 +195,7 @@ Partial Class frmMain
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(303, 82)
+        Me.Button1.Location = New System.Drawing.Point(579, 28)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 16
@@ -209,7 +212,7 @@ Partial Class frmMain
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(384, 111)
+        Me.Button2.Location = New System.Drawing.Point(579, 115)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 18
@@ -218,7 +221,7 @@ Partial Class frmMain
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(384, 82)
+        Me.Button3.Location = New System.Drawing.Point(579, 86)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 19
@@ -230,7 +233,7 @@ Partial Class frmMain
         Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1})
         Me.myMenu.Location = New System.Drawing.Point(0, 0)
         Me.myMenu.Name = "myMenu"
-        Me.myMenu.Size = New System.Drawing.Size(556, 24)
+        Me.myMenu.Size = New System.Drawing.Size(675, 24)
         Me.myMenu.TabIndex = 20
         Me.myMenu.Text = "MenuStrip1"
         '
@@ -269,6 +272,7 @@ Partial Class frmMain
         '
         'SaveToolStripMenuItem
         '
+        Me.SaveToolStripMenuItem.Enabled = False
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
@@ -292,7 +296,7 @@ Partial Class frmMain
         'chkFavorite
         '
         Me.chkFavorite.AutoSize = True
-        Me.chkFavorite.Location = New System.Drawing.Point(463, 149)
+        Me.chkFavorite.Location = New System.Drawing.Point(452, 56)
         Me.chkFavorite.Name = "chkFavorite"
         Me.chkFavorite.Size = New System.Drawing.Size(64, 17)
         Me.chkFavorite.TabIndex = 22
@@ -328,11 +332,33 @@ Partial Class frmMain
         Me.Label6.TabIndex = 25
         Me.Label6.Text = "Notes"
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(29, 115)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(81, 13)
+        Me.Label8.TabIndex = 26
+        Me.Label8.Text = "Web Inspiration"
+        '
+        'txtURL
+        '
+        Me.txtURL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bs, "SourceURL", True))
+        Me.txtURL.Location = New System.Drawing.Point(20, 131)
+        Me.txtURL.Name = "txtURL"
+        Me.txtURL.Size = New System.Drawing.Size(519, 20)
+        Me.txtURL.TabIndex = 27
+        '
+        'tmrWatch
+        '
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(556, 496)
+        Me.ClientSize = New System.Drawing.Size(675, 496)
+        Me.Controls.Add(Me.txtURL)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtNotes)
         Me.Controls.Add(Me.txtContributor)
@@ -401,4 +427,7 @@ Partial Class frmMain
     Friend WithEvents txtNotes As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents bsNote As System.Windows.Forms.BindingSource
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtURL As System.Windows.Forms.TextBox
+    Friend WithEvents tmrWatch As System.Windows.Forms.Timer
 End Class

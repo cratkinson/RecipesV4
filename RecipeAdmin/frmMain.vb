@@ -2,8 +2,16 @@
 Public Class frmMain
     Private theApp As App = New App
     Private theUser As Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
+    Private hasChanges As Boolean = False
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        AddHandler txtURL.KeyPress, AddressOf aKeyPressEvent
+        AddHandler txtInstructions.KeyPress, AddressOf aKeyPressEvent
+        AddHandler txtTitle.KeyPress, AddressOf aKeyPressEvent
+        AddHandler txtIngredients.KeyPress, AddressOf aKeyPressEvent
+        AddHandler txtPrepTime.KeyPress, AddressOf aKeyPressEvent
+        AddHandler txtCookTime.KeyPress, AddressOf aKeyPressEvent
+
         With cbCategory
             .DataSource = theApp.Category_Get_All
             .DisplayMember = "Description"
@@ -28,6 +36,10 @@ Public Class frmMain
         Dim b As New Binding("Text", bs, "Contributor.Name")
         txtContributor.DataBindings.Add(b)
 
+        AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
+        AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
+
+        tmrWatch.Start()
 
     End Sub
 
@@ -119,7 +131,8 @@ Public Class frmMain
         End If
         theApp.Contributor_Update(theUser)
         theApp.Save()
-
+        ResetControls()
+        hasChanges = False
     End Sub
 
     Private Sub chkFavorite_CheckedChanged(sender As Object, e As EventArgs) Handles chkFavorite.CheckedChanged
@@ -143,11 +156,44 @@ Public Class frmMain
     End Sub
 
     Private Sub txtNotes_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNotes.KeyPress
-        Debug.WriteLine("txtNotes_KeyPress")
+        txtNotes.BackColor = Color.BlanchedAlmond
+        hasChanges = True
         If bsNote.Count = 0 Then
             Dim theNote As New Note With {.Recipe = bs.DataSource}
             theUser.Notes.Add(theNote)
             bsNote.DataSource = theNote
         End If
+    End Sub
+    Private Sub aKeyPressEvent(sender As Object, e As KeyPressEventArgs)
+        Dim theTB As TextBox = sender
+        theTB.BackColor = Color.BlanchedAlmond
+        hasChanges = True
+
+
+        Debug.WriteLine("")
+    End Sub
+
+    Private Sub tmrWatch_Tick(sender As Object, e As EventArgs) Handles tmrWatch.Tick
+        SaveToolStripMenuItem.Enabled = hasChanges
+    End Sub
+    Private Sub ResetControls()
+        txtTitle.BackColor = System.Drawing.SystemColors.Window
+        txtCookTime.BackColor = System.Drawing.SystemColors.Window
+        txtPrepTime.BackColor = System.Drawing.SystemColors.Window
+        txtIngredients.BackColor = System.Drawing.SystemColors.Window
+        txtInstructions.BackColor = System.Drawing.SystemColors.Window
+        txtNotes.BackColor = System.Drawing.SystemColors.Window
+        txtURL.BackColor = System.Drawing.SystemColors.Window
+        cbCategory.BackColor = System.Drawing.SystemColors.Window
+        cbServing.BackColor = System.Drawing.SystemColors.Window
+    End Sub
+
+    Private Sub aComboBoxIndexChanged(sender As Object, e As EventArgs)
+        hasChanges = True
+        CType(sender, ComboBox).BackColor = Color.BlanchedAlmond
+    End Sub
+
+    Private Sub cbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCategory.SelectedIndexChanged
+
     End Sub
 End Class
