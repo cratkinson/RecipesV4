@@ -52,13 +52,14 @@ Partial Class frmMain
         Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
-        Me.txtContributor = New System.Windows.Forms.TextBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
         Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtURL = New System.Windows.Forms.TextBox()
         Me.tmrWatch = New System.Windows.Forms.Timer(Me.components)
+        Me.lblContributor = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.myMenu.SuspendLayout()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -205,9 +206,9 @@ Partial Class frmMain
         'cbContributors
         '
         Me.cbContributors.FormattingEnabled = True
-        Me.cbContributors.Location = New System.Drawing.Point(303, 30)
+        Me.cbContributors.Location = New System.Drawing.Point(563, 152)
         Me.cbContributors.Name = "cbContributors"
-        Me.cbContributors.Size = New System.Drawing.Size(143, 21)
+        Me.cbContributors.Size = New System.Drawing.Size(91, 21)
         Me.cbContributors.TabIndex = 17
         '
         'Button2
@@ -303,13 +304,6 @@ Partial Class frmMain
         Me.chkFavorite.Text = "Favorite"
         Me.chkFavorite.UseVisualStyleBackColor = True
         '
-        'txtContributor
-        '
-        Me.txtContributor.Location = New System.Drawing.Point(303, 54)
-        Me.txtContributor.Name = "txtContributor"
-        Me.txtContributor.Size = New System.Drawing.Size(143, 20)
-        Me.txtContributor.TabIndex = 23
-        '
         'txtNotes
         '
         Me.txtNotes.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bsNote, "Notes", True))
@@ -352,16 +346,35 @@ Partial Class frmMain
         'tmrWatch
         '
         '
+        'lblContributor
+        '
+        Me.lblContributor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblContributor.Location = New System.Drawing.Point(300, 57)
+        Me.lblContributor.Name = "lblContributor"
+        Me.lblContributor.Size = New System.Drawing.Size(112, 17)
+        Me.lblContributor.TabIndex = 28
+        Me.lblContributor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(300, 38)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(76, 13)
+        Me.Label9.TabIndex = 29
+        Me.Label9.Text = "Contributed By"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(675, 496)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.lblContributor)
         Me.Controls.Add(Me.txtURL)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtNotes)
-        Me.Controls.Add(Me.txtContributor)
         Me.Controls.Add(Me.chkFavorite)
         Me.Controls.Add(Me.txtInstructions)
         Me.Controls.Add(Me.Button3)
@@ -423,11 +436,12 @@ Partial Class frmMain
     Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents txtInstructions As System.Windows.Forms.TextBox
     Friend WithEvents chkFavorite As System.Windows.Forms.CheckBox
-    Friend WithEvents txtContributor As System.Windows.Forms.TextBox
     Friend WithEvents txtNotes As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents bsNote As System.Windows.Forms.BindingSource
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents txtURL As System.Windows.Forms.TextBox
     Friend WithEvents tmrWatch As System.Windows.Forms.Timer
+    Friend WithEvents lblContributor As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
 End Class

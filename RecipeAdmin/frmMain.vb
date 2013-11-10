@@ -3,6 +3,7 @@ Public Class frmMain
     Private theApp As App = New App
     Private theUser As Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
     Private hasChanges As Boolean = False
+    Private isLoading As Boolean = False
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         AddHandler txtURL.KeyPress, AddressOf aKeyPressEvent
@@ -34,7 +35,7 @@ Public Class frmMain
         End With
 
         Dim b As New Binding("Text", bs, "Contributor.Name")
-        txtContributor.DataBindings.Add(b)
+        lblContributor.DataBindings.Add(b)
 
         AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
@@ -62,6 +63,7 @@ Public Class frmMain
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        isLoading = True
         Dim r As Recipe = theApp.Recipe_Get_By_ID(2) '2
 
         chkFavorite.Checked = theUser.IsAFavorite(r)
@@ -70,6 +72,7 @@ Public Class frmMain
         End If
 
         bs.DataSource = r
+        isLoading = False
 
     End Sub
 
@@ -189,8 +192,11 @@ Public Class frmMain
     End Sub
 
     Private Sub aComboBoxIndexChanged(sender As Object, e As EventArgs)
-        hasChanges = True
-        CType(sender, ComboBox).BackColor = Color.BlanchedAlmond
+        If Not isLoading Then
+            hasChanges = True
+            CType(sender, ComboBox).BackColor = Color.BlanchedAlmond
+        End If
+
     End Sub
 
     Private Sub cbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCategory.SelectedIndexChanged
