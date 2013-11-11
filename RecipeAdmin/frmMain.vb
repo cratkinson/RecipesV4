@@ -207,4 +207,18 @@ Public Class frmMain
     Private Sub cbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbCategory.SelectedIndexChanged
 
     End Sub
+
+    Private Sub PrintToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles PrintToolStripMenuItem1.Click
+        Using f As frmAdmin = New frmAdmin
+            f.ShowDialog()
+        End Using
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Using f As frmDisplay = New frmDisplay
+            f.theRecipe = bs.DataSource
+            f.ShowDialog()
+
+        End Using
+    End Sub
 End Class

@@ -24,7 +24,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -53,15 +52,18 @@ Partial Class frmMain
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
-        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtURL = New System.Windows.Forms.TextBox()
         Me.tmrWatch = New System.Windows.Forms.Timer(Me.components)
         Me.lblContributor = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PrintToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.myMenu.SuspendLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -73,10 +75,6 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
-        '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -206,7 +204,7 @@ Partial Class frmMain
         'cbContributors
         '
         Me.cbContributors.FormattingEnabled = True
-        Me.cbContributors.Location = New System.Drawing.Point(563, 152)
+        Me.cbContributors.Location = New System.Drawing.Point(563, 189)
         Me.cbContributors.Name = "cbContributors"
         Me.cbContributors.Size = New System.Drawing.Size(91, 21)
         Me.cbContributors.TabIndex = 17
@@ -231,7 +229,7 @@ Partial Class frmMain
         '
         'myMenu
         '
-        Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1})
+        Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1, Me.PrintToolStripMenuItem2})
         Me.myMenu.Location = New System.Drawing.Point(0, 0)
         Me.myMenu.Name = "myMenu"
         Me.myMenu.Size = New System.Drawing.Size(675, 24)
@@ -282,8 +280,8 @@ Partial Class frmMain
         'PrintToolStripMenuItem1
         '
         Me.PrintToolStripMenuItem1.Name = "PrintToolStripMenuItem1"
-        Me.PrintToolStripMenuItem1.Size = New System.Drawing.Size(44, 20)
-        Me.PrintToolStripMenuItem1.Text = "&Print"
+        Me.PrintToolStripMenuItem1.Size = New System.Drawing.Size(55, 20)
+        Me.PrintToolStripMenuItem1.Text = "Admin"
         '
         'txtInstructions
         '
@@ -312,10 +310,6 @@ Partial Class frmMain
         Me.txtNotes.Name = "txtNotes"
         Me.txtNotes.Size = New System.Drawing.Size(532, 85)
         Me.txtNotes.TabIndex = 24
-        '
-        'bsNote
-        '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
         '
         'Label6
         '
@@ -364,11 +358,35 @@ Partial Class frmMain
         Me.Label9.TabIndex = 29
         Me.Label9.Text = "Contributed By"
         '
+        'PrintToolStripMenuItem2
+        '
+        Me.PrintToolStripMenuItem2.Name = "PrintToolStripMenuItem2"
+        Me.PrintToolStripMenuItem2.Size = New System.Drawing.Size(44, 20)
+        Me.PrintToolStripMenuItem2.Text = "&Print"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(579, 144)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 30
+        Me.Button4.Text = "Display"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(675, 496)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.lblContributor)
         Me.Controls.Add(Me.txtURL)
@@ -399,9 +417,9 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -444,4 +462,6 @@ Partial Class frmMain
     Friend WithEvents tmrWatch As System.Windows.Forms.Timer
     Friend WithEvents lblContributor As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents PrintToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class
