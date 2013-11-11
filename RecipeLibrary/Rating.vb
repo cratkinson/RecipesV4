@@ -1,11 +1,11 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 Public Class Rating
-    Public Property RatingID As Integer
+    <Key, Schema.Column(order:=1)> _
+    Public Property RecipeID As Integer
+    <Key, Schema.Column(Order:=2)> _
+    Public Property ContributorID As Integer
     Public Property RatingScore As Integer
 
-    Public Property RecipeID As Integer
     Public Overridable Property Recipe As Recipe
-
-    Public Property ContributorID As Integer
     Public Overridable Property Contributor As Contributor
 End Class

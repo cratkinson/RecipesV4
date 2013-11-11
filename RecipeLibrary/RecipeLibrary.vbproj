@@ -109,6 +109,10 @@
       <DependentUpon>201311071445541_UpdateFavKey.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201311071445541_UpdateFavKey.vb" />
+    <Compile Include="Migrations\201311111422557_ModifyRatingTable.Designer.vb">
+      <DependentUpon>201311111422557_ModifyRatingTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311111422557_ModifyRatingTable.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311071445541_UpdateFavKey.resx">
       <DependentUpon>201311071445541_UpdateFavKey.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311111422557_ModifyRatingTable.resx">
+      <DependentUpon>201311111422557_ModifyRatingTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

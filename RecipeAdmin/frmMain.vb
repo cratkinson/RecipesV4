@@ -4,6 +4,7 @@ Public Class frmMain
     Private theUser As Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
     Private hasChanges As Boolean = False
     Private isLoading As Boolean = False
+    Private EmptyRecipe As Recipe = New Recipe
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
         AddHandler txtURL.KeyPress, AddressOf aKeyPressEvent
@@ -41,7 +42,7 @@ Public Class frmMain
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
 
         tmrWatch.Start()
-
+        EmptyRecipe = bs.DataSource
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -64,7 +65,7 @@ Public Class frmMain
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         isLoading = True
-        Dim r As Recipe = theApp.Recipe_Get_By_ID(2) '2
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(5) '2
 
         chkFavorite.Checked = theUser.IsAFavorite(r)
         If theUser.HasANote(r) Then
@@ -84,11 +85,15 @@ Public Class frmMain
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If MsgBox("Are you sure?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Delete Recipe") = MsgBoxResult.Yes Then
-            Dim r As Recipe = bs.DataSource
-            theApp.Recipe_Delete(r)
-            theApp.Save()
-            bs.DataSource = Nothing
+        Dim r As Recipe = bs.DataSource
+        If theApp.Recipe_Can_Delete(r) Then
+            If MsgBox("Are you sure?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Delete Recipe") = MsgBoxResult.Yes Then
+                theApp.Recipe_Delete(r)
+                theApp.Save()
+                bs.DataSource = EmptyRecipe
+            End If
+        Else
+            MsgBox("This recipe is a favorite or has a note from others. Can't be deleted.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Delete Recipe")
         End If
 
     End Sub
