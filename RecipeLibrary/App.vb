@@ -44,6 +44,12 @@
     Sub Note_Update(aNote As Note)
     Sub Note_Delete(aNote As Note)
 
+    Function Rating_Get(ContributorID As Integer, RecipeID As Integer) As Rating
+    Sub Rating_Insert(aRating As Rating)
+    Sub Rating_Update(aRating As Rating)
+    Sub Rating_Delete(aRating As Rating)
+
+
     Sub Save()
 
 
@@ -187,6 +193,9 @@ Public Class App
             _db.Favorites.Remove(fav)
         End If
     End Sub
+    '--------------------------------------------------------------------
+    ' Notes
+    '--------------------------------------------------------------------
     Function Note_Get(ContributorID As Integer, RecipeID As Integer) As Note Implements iApp.Note_Get
         Return _db.Notes.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID)
 
@@ -199,6 +208,21 @@ Public Class App
     End Sub
     Sub Note_Delete(aNote As Note) Implements iApp.Note_Delete
         _db.Notes.Remove(aNote)
+    End Sub
+    '--------------------------------------------------------------------
+    ' Ratings
+    '--------------------------------------------------------------------
+    Function Rating_Get(ContributorID As Integer, RecipeID As Integer) As Rating Implements iApp.Rating_Get
+        Return _db.Ratings.SingleOrDefault(Function(f) f.ContributorID = ContributorID And f.RecipeID = RecipeID)
+    End Function
+    Sub Rating_Insert(aRating As Rating) Implements iApp.Rating_Insert
+        _db.Ratings.Add(aRating)
+    End Sub
+    Sub Rating_Update(aRating As Rating) Implements iApp.Rating_Update
+        _db.Entry(aRating).State = Entity.EntityState.Modified
+    End Sub
+    Sub Rating_Delete(aRating As Rating) Implements iApp.Rating_Delete
+        _db.Ratings.Remove(aRating)
     End Sub
 
     '--------------------------------------------------------------------
