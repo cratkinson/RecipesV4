@@ -50,6 +50,7 @@ Partial Class frmMain
         Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrintToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
@@ -60,6 +61,8 @@ Partial Class frmMain
         Me.tmrWatch = New System.Windows.Forms.Timer(Me.components)
         Me.lblContributor = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.myMenu.SuspendLayout()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -206,7 +209,7 @@ Partial Class frmMain
         'cbContributors
         '
         Me.cbContributors.FormattingEnabled = True
-        Me.cbContributors.Location = New System.Drawing.Point(563, 152)
+        Me.cbContributors.Location = New System.Drawing.Point(563, 222)
         Me.cbContributors.Name = "cbContributors"
         Me.cbContributors.Size = New System.Drawing.Size(91, 21)
         Me.cbContributors.TabIndex = 17
@@ -231,7 +234,7 @@ Partial Class frmMain
         '
         'myMenu
         '
-        Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1})
+        Me.myMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.PrintToolStripMenuItem, Me.PrintToolStripMenuItem1, Me.PrintToolStripMenuItem2})
         Me.myMenu.Location = New System.Drawing.Point(0, 0)
         Me.myMenu.Name = "myMenu"
         Me.myMenu.Size = New System.Drawing.Size(675, 24)
@@ -282,8 +285,14 @@ Partial Class frmMain
         'PrintToolStripMenuItem1
         '
         Me.PrintToolStripMenuItem1.Name = "PrintToolStripMenuItem1"
-        Me.PrintToolStripMenuItem1.Size = New System.Drawing.Size(44, 20)
-        Me.PrintToolStripMenuItem1.Text = "&Print"
+        Me.PrintToolStripMenuItem1.Size = New System.Drawing.Size(55, 20)
+        Me.PrintToolStripMenuItem1.Text = "Admin"
+        '
+        'PrintToolStripMenuItem2
+        '
+        Me.PrintToolStripMenuItem2.Name = "PrintToolStripMenuItem2"
+        Me.PrintToolStripMenuItem2.Size = New System.Drawing.Size(44, 20)
+        Me.PrintToolStripMenuItem2.Text = "&Print"
         '
         'txtInstructions
         '
@@ -364,11 +373,31 @@ Partial Class frmMain
         Me.Label9.TabIndex = 29
         Me.Label9.Text = "Contributed By"
         '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(579, 144)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 30
+        Me.Button4.Text = "Display"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(579, 172)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 31
+        Me.Button5.Text = "Search"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(675, 496)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.lblContributor)
         Me.Controls.Add(Me.txtURL)
@@ -444,4 +473,7 @@ Partial Class frmMain
     Friend WithEvents tmrWatch As System.Windows.Forms.Timer
     Friend WithEvents lblContributor As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents PrintToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Button5 As System.Windows.Forms.Button
 End Class

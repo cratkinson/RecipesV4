@@ -85,6 +85,12 @@
       <DependentUpon>frmAdmin.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDisplay.Designer.vb">
+      <DependentUpon>frmDisplay.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDisplay.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
@@ -110,6 +116,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmAdmin.resx">
       <DependentUpon>frmAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDisplay.resx">
+      <DependentUpon>frmDisplay.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>

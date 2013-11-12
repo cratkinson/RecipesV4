@@ -40,6 +40,34 @@ Public Class Recipe
             Me.AddIngredients(value)
         End Set
     End Property
+    <Schema.NotMapped> _
+    Public ReadOnly Property ToHTML As String
+        Get
+            Dim html As String = String.Empty
+            html += "<div id=""theRecipe""><h1>" + Me.Title + "</h1>"
+            html += "<p>by " + Me.Contributor.Name
+            html += "<p>Serves " + Me.Serving.Description
+            If Me.PrepareTime > 0 Or Me.CookTime > 0 Then
+                If Me.PrepareTime > 0 Then
+                    html += "<p>Preparation: " + Me.PrepareTime.ToString + " minutes | Total: " + TotalTime.ToString + " minutes"
+                End If
+            End If
+            html += "</p>"
+            html += "<h2>Ingredients</h2>"
+            html += "<ul>"
+            For Each i As IngredientLine In Me.Ingredients
+                html += "<li>" + i.ToString + "</li>"
+            Next
+            html += "</ul>"
+            html += "<h2>Instructions</h2>"
+            html += "<p>" + Me.Instructions + "</p>"
+            If Not String.IsNullOrEmpty(Me.SourceURL) Then
+                html += "<p><a href=" + Me.SourceURL + " target=""_blank"">Web Inspiration</a></p>"
+            End If
+            html += "</div>"
+            Return html
+        End Get
+    End Property
     Public Sub New()
         Me.LastUpdated = Now
         Me.Ingredients = New HashSet(Of IngredientLine)
@@ -126,5 +154,8 @@ Public Class Recipe
         Else
             Return String.Empty
         End If
+    End Function
+    Private Function TotalTime() As Integer
+        Return Me.PrepareTime + Me.CookTime
     End Function
 End Class
