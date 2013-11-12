@@ -154,6 +154,7 @@ Public Class App
     Function Recipe_Can_Delete(aRecipe As Recipe) As Boolean Implements iApp.Recipe_Can_Delete
         Dim isAFavorite As Boolean = _db.Favorites.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
         Dim hasANote As Boolean = _db.Notes.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
+        Dim hasARating As Boolean = _db.Ratings.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
         Return Not isAFavorite And Not hasANote
     End Function
     '--------------------------------------------------------------------
