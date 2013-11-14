@@ -34,6 +34,7 @@
     Sub Recipe_Update(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
     Function Recipe_Can_Delete(aRecipe As Recipe) As Boolean
+    Function Recipe_Search(aSearch As String) As List(Of Recipe)
 
     Function Favorite_Exists(ContributorID As Integer, RecipeID As Integer) As Boolean
     Sub Favorite_Insert(theContributor As Contributor, theRecipe As Recipe)
@@ -154,7 +155,14 @@ Public Class App
     Function Recipe_Can_Delete(aRecipe As Recipe) As Boolean Implements iApp.Recipe_Can_Delete
         Dim isAFavorite As Boolean = _db.Favorites.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
         Dim hasANote As Boolean = _db.Notes.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
-        Return Not isAFavorite And Not hasANote
+        Dim hasARating As Boolean = _db.Ratings.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
+        Return Not isAFavorite And Not hasANote And Not hasARating
+    End Function
+    Function Recipe_Search(aSearch As String) As List(Of Recipe) Implements iApp.Recipe_Search
+        Dim aList As List(Of Recipe) = _
+            _db.Recipes.Where(Function(f) f.Title.Contains(aSearch)).ToList
+
+      
     End Function
     '--------------------------------------------------------------------
     ' Servings
