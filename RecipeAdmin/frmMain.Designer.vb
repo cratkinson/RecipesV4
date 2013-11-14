@@ -24,7 +24,6 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -54,7 +53,6 @@ Partial Class frmMain
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
-        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtURL = New System.Windows.Forms.TextBox()
@@ -63,8 +61,11 @@ Partial Class frmMain
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
+        Me.cbRecipes = New System.Windows.Forms.ComboBox()
         Me.myMenu.SuspendLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -76,10 +77,6 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
-        '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -322,10 +319,6 @@ Partial Class frmMain
         Me.txtNotes.Size = New System.Drawing.Size(532, 85)
         Me.txtNotes.TabIndex = 24
         '
-        'bsNote
-        '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -391,11 +384,28 @@ Partial Class frmMain
         Me.Button5.Text = "Search"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
+        'cbRecipes
+        '
+        Me.cbRecipes.FormattingEnabled = True
+        Me.cbRecipes.Location = New System.Drawing.Point(550, 249)
+        Me.cbRecipes.Name = "cbRecipes"
+        Me.cbRecipes.Size = New System.Drawing.Size(121, 21)
+        Me.cbRecipes.TabIndex = 32
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(675, 496)
+        Me.Controls.Add(Me.cbRecipes)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Label9)
@@ -428,9 +438,9 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -476,4 +486,5 @@ Partial Class frmMain
     Friend WithEvents PrintToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents cbRecipes As System.Windows.Forms.ComboBox
 End Class

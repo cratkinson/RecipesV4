@@ -12,12 +12,20 @@ Public Class Contributor
 
     Public ReadOnly Property IsAFavorite(aRecipe As Recipe) As Boolean
         Get
+            If aRecipe Is Nothing Then
+                Return False
+            End If
+
             Dim q = Me.Favorites.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList
             Return q.Count > 0
         End Get
     End Property
     Public ReadOnly Property HasANote(aRecipe As Recipe) As Boolean
         Get
+            If aRecipe Is Nothing Then
+                Return False
+            End If
+
             Return Me.Notes.Where(Function(f) f.RecipeID = aRecipe.RecipeID).ToList.Count > 0
         End Get
     End Property

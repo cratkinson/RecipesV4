@@ -4,9 +4,12 @@ Public Class frmMain
     Private theUser As Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
     Private hasChanges As Boolean = False
     Private isLoading As Boolean = False
+    Private isStarting As Boolean = False
     Private EmptyRecipe As Recipe = New Recipe
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles Me.Load
+        isStarting = True
+
         AddHandler txtURL.KeyPress, AddressOf aKeyPressEvent
         AddHandler txtInstructions.KeyPress, AddressOf aKeyPressEvent
         AddHandler txtTitle.KeyPress, AddressOf aKeyPressEvent
@@ -35,14 +38,23 @@ Public Class frmMain
             .SelectedIndex = 0
         End With
 
+        With cbRecipes
+            .DataSource = theApp.Recipe_Get_All
+            .DisplayMember = "Title"
+            .ValueMember = "RecipeID"
+            .SelectedIndex = -1
+        End With
+
         Dim b As New Binding("Text", bs, "Contributor.Name")
         lblContributor.DataBindings.Add(b)
 
         AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
 
+        isStarting = False
         tmrWatch.Start()
         EmptyRecipe = bs.DataSource
+
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -90,7 +102,7 @@ Public Class frmMain
             If MsgBox("Are you sure?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Delete Recipe") = MsgBoxResult.Yes Then
                 theApp.Recipe_Delete(r)
                 theApp.Save()
-                bs.DataSource = EmptyRecipe
+                bs.DataSource = New Recipe
             End If
         Else
             MsgBox("This recipe is a favorite or has a note from others. Can't be deleted.", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Delete Recipe")
@@ -125,6 +137,12 @@ Public Class frmMain
         r.ServingID = cbServing.SelectedValue
 
         bs.DataSource = r
+        chkFavorite.Checked = theUser.IsAFavorite(r)
+        If theUser.HasANote(r) Then
+            bsNote.DataSource = theUser.Notes.SingleOrDefault(Function(f) f.RecipeID = r.RecipeID)
+        Else
+            bsNote.DataSource = New Note
+        End If
 
     End Sub
 
@@ -223,6 +241,27 @@ Public Class frmMain
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Dim l = theApp.Recipe_Search("chicken")
+        Dim l = theApp.Recipe_Search("sesame oil")
+    End Sub
+
+    Private Sub cbRecipes_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbRecipes.SelectedIndexChanged
+        If Not isStarting Then
+            GetData(cbRecipes.SelectedValue)
+        End If
+    End Sub
+    Private Sub GetData(rID As Integer)
+        isLoading = True
+        Dim r As Recipe = theApp.Recipe_Get_By_ID(rID)
+
+        chkFavorite.Checked = theUser.IsAFavorite(r)
+        If theUser.HasANote(r) Then
+            bsNote.DataSource = theUser.Notes.SingleOrDefault(Function(f) f.RecipeID = r.RecipeID)
+        Else
+            bsNote.DataSource = New Note
+        End If
+
+        bs.DataSource = r
+        isLoading = False
+
     End Sub
 End Class

@@ -1,4 +1,5 @@
-﻿Public Interface iApp
+﻿Imports LinqKit
+Public Interface iApp
     'Function GetRecipeByAll() As List(Of Recipe)
     'Function GetRecipeByID(ID As Integer) As Recipe
     'Function GetRecipeByCategory(CategoryID As Integer) As List(Of Recipe)
@@ -30,6 +31,7 @@
 
 
     Function Recipe_Get_By_ID(ID As Integer) As Recipe
+    Function Recipe_Get_All() As List(Of Recipe)
     Sub Recipe_Insert(aRecipe As Recipe)
     Sub Recipe_Update(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
@@ -137,6 +139,9 @@ Public Class App
     Function Recipe_Get_By_ID(ID As Integer) As Recipe Implements iApp.Recipe_Get_By_ID
         Return _db.Recipes.SingleOrDefault(Function(f) f.RecipeID = ID)
     End Function
+    Function Recipe_Get_All() As List(Of Recipe) Implements iApp.Recipe_Get_All
+        Return _db.Recipes.ToList
+    End Function
     Public Sub Recipe_Insert(aRecipe As Recipe) Implements iApp.Recipe_Insert
         aRecipe.FirstAdded = Date.Now
         aRecipe.LastUpdated = Date.Now
@@ -159,10 +164,21 @@ Public Class App
         Return Not isAFavorite And Not hasANote And Not hasARating
     End Function
     Function Recipe_Search(aSearch As String) As List(Of Recipe) Implements iApp.Recipe_Search
-        Dim aList As List(Of Recipe) = _
-            _db.Recipes.Where(Function(f) f.Title.Contains(aSearch)).ToList
+        Dim words As List(Of String) = aSearch.Split(New Char() {" "c}).ToList
+        Dim pRecipe = LinqKit.PredicateBuilder.True(Of Recipe)()
+        Dim pIngredientLine = LinqKit.PredicateBuilder.True(Of IngredientLine)()
 
-      
+        For Each word In words
+            pRecipe = pRecipe.And(Function(f) f.Title.Contains(word))
+            pIngredientLine = pIngredientLine.And(Function(f) f.Ingredient.Contains(word))
+        Next
+
+        Dim aList_1 As List(Of Recipe) = _
+            _db.Recipes.AsExpandable.Where(pRecipe).ToList
+        Dim aList_2 As List(Of Recipe) = _
+            _db.Ingredients.AsExpandable.Where(pIngredientLine).Select(Function(f) f.Recipe).ToList
+        Return aList_1.Union(aList_2).ToList
+
     End Function
     '--------------------------------------------------------------------
     ' Servings
