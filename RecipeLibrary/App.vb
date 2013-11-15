@@ -159,21 +159,9 @@ Public Class App
         Return Not isAFavorite And Not hasANote And Not hasARating
     End Function
     Function Recipe_Search(aSearch As String) As List(Of Recipe) Implements iApp.Recipe_Search
-        Dim theList As New List(Of Recipe)
-        Dim Words As List(Of String) = aSearch.Split(New [Char]() {" "c}).ToList
-        For Each word In Words
-            Dim aList_1 As List(Of Recipe) = _
-            _db.Recipes.Where(Function(f) f.Title.Contains(aSearch)).ToList()
+        Dim aList As List(Of Recipe) = _
+            _db.Recipes.Where(Function(f) f.Title.Contains(aSearch)).ToList
 
-            Dim aList_2 As List(Of Recipe) = _
-                _db.Ingredients.Where(Function(f) f.Ingredient.Contains(aSearch)).Select(Function(f) f.Recipe).ToList
-
-
-        Next
-
-
-
-        'Return aList_1.Union(aList_2).ToList
 
     End Function
     '--------------------------------------------------------------------
