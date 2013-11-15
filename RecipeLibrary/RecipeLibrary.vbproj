@@ -134,7 +134,6 @@
     </Compile>
     <Compile Include="Note.vb" />
     <Compile Include="Parser.vb" />
-    <Compile Include="PredicateBuilder.vb" />
     <Compile Include="Rating.vb" />
     <Compile Include="Recipe.vb" />
     <Compile Include="RecipeDB.vb" />
