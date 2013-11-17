@@ -116,6 +116,10 @@
       <DependentUpon>201311111422557_ModifyRatingTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201311111422557_ModifyRatingTable.vb" />
+    <Compile Include="Migrations\201311171530516_AddImageTable.Designer.vb">
+      <DependentUpon>201311171530516_AddImageTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311171530516_AddImageTable.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -137,6 +141,7 @@
     <Compile Include="Rating.vb" />
     <Compile Include="Recipe.vb" />
     <Compile Include="RecipeDB.vb" />
+    <Compile Include="RecipeImage.vb" />
     <Compile Include="Serving.vb" />
     <Compile Include="Unit.vb" />
   </ItemGroup>
@@ -167,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311111422557_ModifyRatingTable.resx">
       <DependentUpon>201311111422557_ModifyRatingTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311171530516_AddImageTable.resx">
+      <DependentUpon>201311171530516_AddImageTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

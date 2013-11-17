@@ -22,6 +22,7 @@ Public Class Recipe
     Public Overridable Property Contributor As Contributor
 
     Public Overridable Property Ingredients As ICollection(Of IngredientLine)
+    Public Overridable Property Images As ICollection(Of RecipeImage)
 
     <Schema.NotMapped> _
     Public Property IngredientsBlock As String
