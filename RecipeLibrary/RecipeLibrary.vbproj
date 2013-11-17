@@ -120,6 +120,10 @@
       <DependentUpon>201311171530516_AddImageTable.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201311171530516_AddImageTable.vb" />
+    <Compile Include="Migrations\201311171615597_AddImageTable1.Designer.vb">
+      <DependentUpon>201311171615597_AddImageTable1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311171615597_AddImageTable1.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -175,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311171530516_AddImageTable.resx">
       <DependentUpon>201311171530516_AddImageTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311171615597_AddImageTable1.resx">
+      <DependentUpon>201311171615597_AddImageTable1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
