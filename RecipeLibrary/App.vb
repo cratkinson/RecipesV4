@@ -1,4 +1,6 @@
 ﻿Imports LinqKit
+Imports System.IO
+Imports System.Drawing
 Public Interface iApp
     'Function GetRecipeByAll() As List(Of Recipe)
     'Function GetRecipeByID(ID As Integer) As Recipe

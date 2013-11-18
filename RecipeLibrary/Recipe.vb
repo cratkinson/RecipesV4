@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 Imports System.Collections.Generic
+Imports System.Drawing
 Public Class Recipe
     Public Property RecipeID As Integer
     <StringLength(50)> _
@@ -22,7 +23,7 @@ Public Class Recipe
     Public Overridable Property Contributor As Contributor
 
     Public Overridable Property Ingredients As ICollection(Of IngredientLine)
-    Public Overridable Property Images As ICollection(Of RecipeImage)
+    Public Overridable Property Photos As ICollection(Of RecipeImage)
 
     <Schema.NotMapped> _
     Public Property IngredientsBlock As String
