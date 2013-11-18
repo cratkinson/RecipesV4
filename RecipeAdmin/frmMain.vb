@@ -47,6 +47,8 @@ Public Class frmMain
 
         Dim b As New Binding("Text", bs, "Contributor.Name")
         lblContributor.DataBindings.Add(b)
+        'b = New Binding("Image", bs, "RecipeImage.PhotoAsImage")
+        'pb.DataBindings.Add(b)
 
         AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged

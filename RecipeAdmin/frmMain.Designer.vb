@@ -61,10 +61,12 @@ Partial Class frmMain
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.cbRecipes = New System.Windows.Forms.ComboBox()
+        Me.pb = New System.Windows.Forms.PictureBox()
         Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
-        Me.cbRecipes = New System.Windows.Forms.ComboBox()
         Me.myMenu.SuspendLayout()
+        CType(Me.pb, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -313,7 +315,7 @@ Partial Class frmMain
         'txtNotes
         '
         Me.txtNotes.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.bsNote, "Notes", True))
-        Me.txtNotes.Location = New System.Drawing.Point(12, 399)
+        Me.txtNotes.Location = New System.Drawing.Point(12, 605)
         Me.txtNotes.Multiline = True
         Me.txtNotes.Name = "txtNotes"
         Me.txtNotes.Size = New System.Drawing.Size(532, 85)
@@ -322,7 +324,7 @@ Partial Class frmMain
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 383)
+        Me.Label6.Location = New System.Drawing.Point(12, 589)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 13)
         Me.Label6.TabIndex = 25
@@ -384,14 +386,6 @@ Partial Class frmMain
         Me.Button5.Text = "Search"
         Me.Button5.UseVisualStyleBackColor = True
         '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
-        'bsNote
-        '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
-        '
         'cbRecipes
         '
         Me.cbRecipes.FormattingEnabled = True
@@ -400,11 +394,30 @@ Partial Class frmMain
         Me.cbRecipes.Size = New System.Drawing.Size(121, 21)
         Me.cbRecipes.TabIndex = 32
         '
+        'pb
+        '
+        Me.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pb.Location = New System.Drawing.Point(16, 390)
+        Me.pb.Name = "pb"
+        Me.pb.Size = New System.Drawing.Size(528, 209)
+        Me.pb.TabIndex = 33
+        Me.pb.TabStop = False
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
         'frmMain
         '
+        Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(675, 496)
+        Me.ClientSize = New System.Drawing.Size(675, 702)
+        Me.Controls.Add(Me.pb)
         Me.Controls.Add(Me.cbRecipes)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -440,6 +453,7 @@ Partial Class frmMain
         Me.Text = "Recipe Console"
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.pb, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -487,4 +501,5 @@ Partial Class frmMain
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents cbRecipes As System.Windows.Forms.ComboBox
+    Friend WithEvents pb As System.Windows.Forms.PictureBox
 End Class
