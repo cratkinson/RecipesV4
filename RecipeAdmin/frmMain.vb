@@ -47,11 +47,15 @@ Public Class frmMain
 
         Dim b As New Binding("Text", bs, "Contributor.Name")
         lblContributor.DataBindings.Add(b)
+
         'b = New Binding("Image", bs, "RecipeImage.PhotoAsImage")
         'pb.DataBindings.Add(b)
 
         AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
+
+        pb.AllowDrop = True
+
 
         isStarting = False
         tmrWatch.Start()
@@ -264,6 +268,14 @@ Public Class frmMain
 
         bs.DataSource = r
         isLoading = False
+
+    End Sub
+
+    Private Sub pb_DragDrop(sender As Object, e As DragEventArgs) Handles pb.DragDrop
+
+    End Sub
+
+    Private Sub pb_DragEnter(sender As Object, e As DragEventArgs) Handles pb.DragEnter
 
     End Sub
 End Class
