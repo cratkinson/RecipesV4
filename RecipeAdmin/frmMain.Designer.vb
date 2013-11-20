@@ -486,7 +486,7 @@ Partial Class frmMain
         Me.bnPhotos.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.bnPhotos.Name = "bnPhotos"
         Me.bnPhotos.PositionItem = Me.BindingNavigatorPositionItem
-        Me.bnPhotos.Size = New System.Drawing.Size(286, 25)
+        Me.bnPhotos.Size = New System.Drawing.Size(255, 25)
         Me.bnPhotos.TabIndex = 34
         Me.bnPhotos.Text = "BindingNavigator1"
         '

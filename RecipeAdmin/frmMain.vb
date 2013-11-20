@@ -278,6 +278,8 @@ Public Class frmMain
 
         If r.Photos.Count > 0 Then
             bsPhotos.DataSource = r.Photos
+            Dim b As New Binding("Image", bsPhotos, "PhotoAsImage")
+            pb.DataBindings.Add(b)
             'pb.Image = r.Photos.FirstOrDefault.PhotoAsImage
         End If
         bs.DataSource = r
