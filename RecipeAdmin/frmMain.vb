@@ -48,8 +48,13 @@ Public Class frmMain
         Dim b As New Binding("Text", bs, "Contributor.Name")
         lblContributor.DataBindings.Add(b)
 
-        b = New Binding("Image", bs, "RecipeImage.PhotoAsImage")
-        pb.DataBindings.Add(b)
+        'Try
+        ' b = New Binding("Image", bs, "Photos.PhotoAsImage")
+        ' pb.DataBindings.Add(b)
+        'Catch ex As Exception
+        'Debug.WriteLine(ex.Message)
+        'End Try
+
 
         AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
@@ -97,6 +102,9 @@ Public Class frmMain
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim r As Recipe = bs.DataSource
+        Dim i As RecipeImage = New RecipeImage
+        i.PhotoAsImage = pb.Image
+        r.Photos.Add(i)
         ' r.AddIngredients(txtIngredients.Text)
         theApp.Recipe_Update(r)
         theApp.Save()
@@ -267,6 +275,9 @@ Public Class frmMain
             bsNote.DataSource = New Note
         End If
 
+        If r.Photos.Count > 0 Then
+            pb.Image = r.Photos.FirstOrDefault.PhotoAsImage
+        End If
         bs.DataSource = r
         isLoading = False
 

@@ -11,7 +11,9 @@ Public Class RecipeImage
     <Key, Schema.Column(order:=2)> _
     Public Overridable Property RecipeID As Integer
     Public Overridable Property Recipe As Recipe
-
+    Public Sub New()
+        Me.PhotoAdded = Date.Now
+    End Sub
     <Schema.NotMapped> _
     Public Property PhotoAsImage() As Image
         Get
