@@ -48,8 +48,8 @@ Public Class frmMain
         Dim b As New Binding("Text", bs, "Contributor.Name")
         lblContributor.DataBindings.Add(b)
 
-        'b = New Binding("Image", bs, "RecipeImage.PhotoAsImage")
-        'pb.DataBindings.Add(b)
+        b = New Binding("Image", bs, "RecipeImage.PhotoAsImage")
+        pb.DataBindings.Add(b)
 
         AddHandler cbCategory.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
         AddHandler cbServing.SelectedIndexChanged, AddressOf aComboBoxIndexChanged
@@ -207,6 +207,7 @@ Public Class frmMain
 
     Private Sub tmrWatch_Tick(sender As Object, e As EventArgs) Handles tmrWatch.Tick
         SaveToolStripMenuItem.Enabled = hasChanges
+        PasteToolStripMenuItem.Enabled = Clipboard.ContainsImage
     End Sub
     Private Sub ResetControls()
         txtTitle.BackColor = System.Drawing.SystemColors.Window
@@ -277,5 +278,11 @@ Public Class frmMain
 
     Private Sub pb_DragEnter(sender As Object, e As DragEventArgs) Handles pb.DragEnter
 
+    End Sub
+
+    Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
+        If Clipboard.ContainsImage Then
+            pb.Image = Clipboard.GetImage
+        End If
     End Sub
 End Class

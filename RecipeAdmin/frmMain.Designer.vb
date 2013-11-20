@@ -24,6 +24,7 @@ Partial Class frmMain
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -53,6 +54,7 @@ Partial Class frmMain
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
+        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtURL = New System.Windows.Forms.TextBox()
@@ -63,12 +65,16 @@ Partial Class frmMain
         Me.Button5 = New System.Windows.Forms.Button()
         Me.cbRecipes = New System.Windows.Forms.ComboBox()
         Me.pb = New System.Windows.Forms.PictureBox()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
-        Me.myMenu.SuspendLayout()
-        CType(Me.pb, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pbMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.CutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.myMenu.SuspendLayout()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pb, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pbMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -79,6 +85,10 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -321,6 +331,10 @@ Partial Class frmMain
         Me.txtNotes.Size = New System.Drawing.Size(532, 85)
         Me.txtNotes.TabIndex = 24
         '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -397,19 +411,48 @@ Partial Class frmMain
         'pb
         '
         Me.pb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pb.ContextMenuStrip = Me.pbMenu
         Me.pb.Location = New System.Drawing.Point(16, 390)
         Me.pb.Name = "pb"
         Me.pb.Size = New System.Drawing.Size(528, 209)
+        Me.pb.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pb.TabIndex = 33
         Me.pb.TabStop = False
         '
-        'bs
+        'pbMenu
         '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
+        Me.pbMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CutToolStripMenuItem, Me.CopyToolStripMenuItem, Me.PasteToolStripMenuItem, Me.DeleteToolStripMenuItem})
+        Me.pbMenu.Name = "pbMenu"
+        Me.pbMenu.Size = New System.Drawing.Size(145, 92)
         '
-        'bsNote
+        'CutToolStripMenuItem
         '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        Me.CutToolStripMenuItem.Name = "CutToolStripMenuItem"
+        Me.CutToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+        Me.CutToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.CutToolStripMenuItem.Text = "Cut"
+        '
+        'CopyToolStripMenuItem
+        '
+        Me.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem"
+        Me.CopyToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.CopyToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.CopyToolStripMenuItem.Text = "Copy"
+        '
+        'PasteToolStripMenuItem
+        '
+        Me.PasteToolStripMenuItem.Enabled = False
+        Me.PasteToolStripMenuItem.Name = "PasteToolStripMenuItem"
+        Me.PasteToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        Me.PasteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PasteToolStripMenuItem.Text = "Paste"
+        '
+        'DeleteToolStripMenuItem
+        '
+        Me.DeleteToolStripMenuItem.Name = "DeleteToolStripMenuItem"
+        Me.DeleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete
+        Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
+        Me.DeleteToolStripMenuItem.Text = "Delete"
         '
         'frmMain
         '
@@ -451,11 +494,12 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
-        CType(Me.pb, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pb, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pbMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -502,4 +546,9 @@ Partial Class frmMain
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents cbRecipes As System.Windows.Forms.ComboBox
     Friend WithEvents pb As System.Windows.Forms.PictureBox
+    Friend WithEvents pbMenu As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents CutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CopyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PasteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DeleteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

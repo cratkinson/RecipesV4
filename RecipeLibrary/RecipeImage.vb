@@ -15,8 +15,12 @@ Public Class RecipeImage
     <Schema.NotMapped> _
     Public Property PhotoAsImage() As Image
         Get
-            Dim ms As New MemoryStream(Me.Photo)
-            Return Image.FromStream(ms)
+            If Me.Photo.Length > 0 Then
+                Dim ms As New MemoryStream(Me.Photo)
+                Return Image.FromStream(ms)
+            Else
+                Return Nothing
+            End If
         End Get
         Set(ByVal value As Image)
             Dim ms As New MemoryStream
