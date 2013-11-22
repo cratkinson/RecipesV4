@@ -48,7 +48,7 @@ Public Class frmMain
         Dim b As New Binding("Text", bs, "Contributor.Name")
         lblContributor.DataBindings.Add(b)
 
-        
+
         'Try
         ' b = New Binding("Image", bs, "Photos.PhotoAsImage")
         ' pb.DataBindings.Add(b)
@@ -278,10 +278,19 @@ Public Class frmMain
 
         If r.Photos.Count > 0 Then
             bsPhotos.DataSource = r.Photos
-            Dim b As New Binding("Image", bsPhotos, "PhotoAsImage")
-            pb.DataBindings.Add(b)
-            'pb.Image = r.Photos.FirstOrDefault.PhotoAsImage
+            If pb.DataBindings.Count = 0 Then
+                Dim b As New Binding("Image", bsPhotos, "PhotoAsImage")
+                pb.DataBindings.Add(b)
+            End If
+        Else
+            For iCnt As Integer = 1 To pb.DataBindings.Count
+                pb.DataBindings.RemoveAt(0)
+            Next
+            bsPhotos.DataSource = Nothing
+            pb.Image = Nothing
+
         End If
+
         bs.DataSource = r
         isLoading = False
 

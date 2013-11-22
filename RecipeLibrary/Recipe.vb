@@ -73,6 +73,7 @@ Public Class Recipe
     Public Sub New()
         Me.LastUpdated = Now
         Me.Ingredients = New HashSet(Of IngredientLine)
+        Me.Photos = New HashSet(Of RecipeImage)
     End Sub
     Public Sub AddIngredientsV2(aBlock As String)
         Dim p As IngredientParser = New IngredientParser
