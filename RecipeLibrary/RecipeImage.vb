@@ -13,14 +13,10 @@ Public Class RecipeImage
     Public Overridable Property Recipe As Recipe
     Public Sub New()
         Me.PhotoAdded = Date.Now
-        Me.Photo = New Byte(0) {}
     End Sub
     <Schema.NotMapped> _
     Public Property PhotoAsImage() As Image
         Get
-            If Me.Photo Is Nothing Then
-                Return Nothing
-            End If
 
             If Me.Photo.Length > 0 Then
                 Dim ms As New MemoryStream(Me.Photo)

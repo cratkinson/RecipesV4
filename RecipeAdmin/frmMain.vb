@@ -309,4 +309,9 @@ Public Class frmMain
             pb.Image = Clipboard.GetImage
         End If
     End Sub
+
+    Private Sub BindingNavigatorDeleteItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem.Click
+        Dim r As Recipe = bs.DataSource
+
+    End Sub
 End Class

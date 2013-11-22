@@ -69,29 +69,29 @@ Partial Class frmMain
         Me.CopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PasteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.bnPhotos = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.bsPhotos = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.bsPhotos = New System.Windows.Forms.BindingSource(Me.components)
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
+        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.myMenu.SuspendLayout()
         CType(Me.pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pbMenu.SuspendLayout()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.bnPhotos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bnPhotos.SuspendLayout()
         CType(Me.bsPhotos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -463,14 +463,6 @@ Partial Class frmMain
         Me.DeleteToolStripMenuItem.Size = New System.Drawing.Size(144, 22)
         Me.DeleteToolStripMenuItem.Text = "Delete"
         '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
-        'bsNote
-        '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
-        '
         'bnPhotos
         '
         Me.bnPhotos.AddNewItem = Me.BindingNavigatorAddNewItem
@@ -486,9 +478,34 @@ Partial Class frmMain
         Me.bnPhotos.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.bnPhotos.Name = "bnPhotos"
         Me.bnPhotos.PositionItem = Me.BindingNavigatorPositionItem
-        Me.bnPhotos.Size = New System.Drawing.Size(255, 25)
+        Me.bnPhotos.Size = New System.Drawing.Size(286, 25)
         Me.bnPhotos.TabIndex = 34
         Me.bnPhotos.Text = "BindingNavigator1"
+        '
+        'BindingNavigatorAddNewItem
+        '
+        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
+        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorAddNewItem.Text = "Add new"
+        '
+        'BindingNavigatorCountItem
+        '
+        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
+        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
+        '
+        'BindingNavigatorDeleteItem
+        '
+        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
+        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorDeleteItem.Text = "Delete"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -522,16 +539,9 @@ Partial Class frmMain
         Me.BindingNavigatorPositionItem.Text = "0"
         Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
         '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
         'BindingNavigatorSeparator1
         '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
         Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
         '
         'BindingNavigatorMoveNextItem
@@ -554,26 +564,16 @@ Partial Class frmMain
         '
         'BindingNavigatorSeparator2
         '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'BindingNavigatorAddNewItem
+        'bs
         '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
-        'BindingNavigatorDeleteItem
+        'bsNote
         '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
         '
         'frmMain
         '
@@ -620,12 +620,12 @@ Partial Class frmMain
         Me.myMenu.PerformLayout()
         CType(Me.pb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pbMenu.ResumeLayout(False)
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.bnPhotos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.bnPhotos.ResumeLayout(False)
         Me.bnPhotos.PerformLayout()
         CType(Me.bsPhotos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
