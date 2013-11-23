@@ -125,6 +125,10 @@
       <DependentUpon>201311171615597_AddImageTable1.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201311171615597_AddImageTable1.vb" />
+    <Compile Include="Migrations\201311231530218_AddComplexRecipeTitle.Designer.vb">
+      <DependentUpon>201311231530218_AddComplexRecipeTitle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311231530218_AddComplexRecipeTitle.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -147,6 +151,7 @@
     <Compile Include="Recipe.vb" />
     <Compile Include="RecipeDB.vb" />
     <Compile Include="RecipeImage.vb" />
+    <Compile Include="RecipeTitle.vb" />
     <Compile Include="Serving.vb" />
     <Compile Include="Unit.vb" />
   </ItemGroup>
@@ -183,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311171615597_AddImageTable1.resx">
       <DependentUpon>201311171615597_AddImageTable1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311231530218_AddComplexRecipeTitle.resx">
+      <DependentUpon>201311231530218_AddComplexRecipeTitle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -39,7 +39,7 @@ Public Class frmMain
         End With
 
         With cbRecipes
-            .DataSource = theApp.Recipe_Get_All
+            .DataSource = theApp.Recipe_Get_All_Titles
             .DisplayMember = "Title"
             .ValueMember = "RecipeID"
             .SelectedIndex = -1

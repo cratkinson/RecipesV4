@@ -34,6 +34,7 @@ Public Interface iApp
 
     Function Recipe_Get_By_ID(ID As Integer) As Recipe
     Function Recipe_Get_All() As List(Of Recipe)
+    Function Recipe_Get_All_Titles() As List(Of RecipeTitle)
     Sub Recipe_Insert(aRecipe As Recipe)
     Sub Recipe_Update(aRecipe As Recipe)
     Sub Recipe_Delete(aRecipe As Recipe)
@@ -144,6 +145,12 @@ Public Class App
     Function Recipe_Get_All() As List(Of Recipe) Implements iApp.Recipe_Get_All
         Return _db.Recipes.ToList
     End Function
+    Function Recipe_Get_All_Titles() As List(Of RecipeTitle) Implements iApp.Recipe_Get_All_Titles
+        Return _db.Recipes.Select(Function(f) New RecipeTitle With _
+                                               {.RecipeID = f.RecipeID, _
+                                                .Title = f.Title}).ToList
+    End Function
+
     Public Sub Recipe_Insert(aRecipe As Recipe) Implements iApp.Recipe_Insert
         aRecipe.FirstAdded = Date.Now
         aRecipe.LastUpdated = Date.Now
