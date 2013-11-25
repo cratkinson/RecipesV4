@@ -102,10 +102,14 @@ Public Class frmMain
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        'Dim l As HashSet(Of RecipeImage) = bsPhotos.DataSource
+        bsPhotos.EndEdit()
+        bs.EndEdit()
         Dim r As Recipe = bs.DataSource
-        Dim i As RecipeImage = New RecipeImage
-        i.PhotoAsImage = pb.Image
-        r.Photos.Add(i)
+        r.Photos = bsPhotos.DataSource
+        'Dim i As RecipeImage = New RecipeImage
+        'i.PhotoAsImage = pb.Image
+        'r.Photos.Add(i)
         ' r.AddIngredients(txtIngredients.Text)
         theApp.Recipe_Update(r)
         theApp.Save()
@@ -217,6 +221,7 @@ Public Class frmMain
     Private Sub tmrWatch_Tick(sender As Object, e As EventArgs) Handles tmrWatch.Tick
         SaveToolStripMenuItem.Enabled = hasChanges
         PasteToolStripMenuItem.Enabled = Clipboard.ContainsImage
+        BindingNavigatorDeleteItem.Enabled = bsPhotos.Count > 0
     End Sub
     Private Sub ResetControls()
         txtTitle.BackColor = System.Drawing.SystemColors.Window
@@ -297,11 +302,15 @@ Public Class frmMain
     End Sub
 
     Private Sub pb_DragDrop(sender As Object, e As DragEventArgs) Handles pb.DragDrop
-
+        pb.Image = DirectCast(e.Data.GetData(DataFormats.Bitmap, True), Bitmap)
     End Sub
 
     Private Sub pb_DragEnter(sender As Object, e As DragEventArgs) Handles pb.DragEnter
-
+        If e.Data.GetDataPresent(DataFormats.Bitmap) Or e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.Copy
+        Else
+            e.Effect = DragDropEffects.None
+        End If
     End Sub
 
     Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
@@ -311,7 +320,15 @@ Public Class frmMain
     End Sub
 
     Private Sub BindingNavigatorDeleteItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem.Click
-        Dim r As Recipe = bs.DataSource
+        If MsgBox("Are you sure?", MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, "Delete Photo") = MsgBoxResult.Yes Then
+            Dim aPhoto As RecipeImage = bsPhotos.Current
+            Dim r As Recipe = bs.DataSource
+            r.Photos.Remove(aPhoto)
+            theApp.Recipe_Update(r)
+            theApp.Save()
+            bsPhotos.RemoveCurrent()
+        Else
 
+        End If
     End Sub
 End Class

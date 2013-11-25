@@ -25,6 +25,7 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.cbCategory = New System.Windows.Forms.ComboBox()
+        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
         Me.cbServing = New System.Windows.Forms.ComboBox()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -54,6 +55,7 @@ Partial Class frmMain
         Me.txtInstructions = New System.Windows.Forms.TextBox()
         Me.chkFavorite = New System.Windows.Forms.CheckBox()
         Me.txtNotes = New System.Windows.Forms.TextBox()
+        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtURL = New System.Windows.Forms.TextBox()
@@ -82,16 +84,14 @@ Partial Class frmMain
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.bs = New System.Windows.Forms.BindingSource(Me.components)
-        Me.bsNote = New System.Windows.Forms.BindingSource(Me.components)
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.myMenu.SuspendLayout()
+        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pb, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pbMenu.SuspendLayout()
         CType(Me.bnPhotos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.bnPhotos.SuspendLayout()
         CType(Me.bsPhotos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbCategory
@@ -102,6 +102,10 @@ Partial Class frmMain
         Me.cbCategory.Name = "cbCategory"
         Me.cbCategory.Size = New System.Drawing.Size(121, 21)
         Me.cbCategory.TabIndex = 0
+        '
+        'bs
+        '
+        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
         '
         'cbServing
         '
@@ -344,6 +348,10 @@ Partial Class frmMain
         Me.txtNotes.Size = New System.Drawing.Size(532, 85)
         Me.txtNotes.TabIndex = 24
         '
+        'bsNote
+        '
+        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -468,7 +476,7 @@ Partial Class frmMain
         Me.bnPhotos.AddNewItem = Me.BindingNavigatorAddNewItem
         Me.bnPhotos.BindingSource = Me.bsPhotos
         Me.bnPhotos.CountItem = Me.BindingNavigatorCountItem
-        Me.bnPhotos.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.bnPhotos.DeleteItem = Nothing
         Me.bnPhotos.Dock = System.Windows.Forms.DockStyle.None
         Me.bnPhotos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem})
         Me.bnPhotos.Location = New System.Drawing.Point(12, 380)
@@ -567,14 +575,6 @@ Partial Class frmMain
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'bs
-        '
-        Me.bs.DataSource = GetType(RecipeLibrary.Recipe)
-        '
-        'bsNote
-        '
-        Me.bsNote.DataSource = GetType(RecipeLibrary.Note)
-        '
         'frmMain
         '
         Me.AllowDrop = True
@@ -616,16 +616,16 @@ Partial Class frmMain
         Me.MainMenuStrip = Me.myMenu
         Me.Name = "frmMain"
         Me.Text = "Recipe Console"
+        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
         Me.myMenu.ResumeLayout(False)
         Me.myMenu.PerformLayout()
+        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pb, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pbMenu.ResumeLayout(False)
         CType(Me.bnPhotos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.bnPhotos.ResumeLayout(False)
         Me.bnPhotos.PerformLayout()
         CType(Me.bsPhotos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bs, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bsNote, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
