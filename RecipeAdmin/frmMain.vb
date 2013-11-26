@@ -300,14 +300,30 @@ Public Class frmMain
         isLoading = False
 
     End Sub
+    Private Sub AddPhoto(theImage As Image)
+        Dim r As Recipe = bs.DataSource
+        Dim aNewPhoto As RecipeImage = New RecipeImage With {.PhotoAsImage = theImage}
 
+        r.Photos.Add(aNewPhoto)
+        bsPhotos.Add(aNewPhoto)
+
+        bs.DataSource = r
+        pb.Image = theImage
+        pb.BackColor = Color.BlanchedAlmond
+        hasChanges = True
+    End Sub
     Private Sub pb_DragDrop(sender As Object, e As DragEventArgs) Handles pb.DragDrop
         Try
             If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-                pb.Image = Image.FromFile(CType(e.Data.GetData(DataFormats.FileDrop), Array).GetValue(0).ToString)
+                AddPhoto(Image.FromFile(CType(e.Data.GetData(DataFormats.FileDrop), Array).GetValue(0).ToString))
+
+                '     pb.Image = Image.FromFile(CType(e.Data.GetData(DataFormats.FileDrop), Array).GetValue(0).ToString)
             Else
                 MsgBox("dataformats.bitmap")
             End If
+            'Dim r As Recipe = bs.DataSource
+            'r.Photos.Add(New RecipeImage With {.PhotoAsImage = pb.Image})
+            'bsPhotos.DataSource = r.Photos
 
         Catch ex As Exception
             MessageBox.Show("Error doing drag/drop")
@@ -324,7 +340,9 @@ Public Class frmMain
 
     Private Sub PasteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PasteToolStripMenuItem.Click
         If Clipboard.ContainsImage Then
-            pb.Image = Clipboard.GetImage
+            AddPhoto(Clipboard.GetImage)
+
+            'pb.Image = Clipboard.GetImage
         End If
     End Sub
 
