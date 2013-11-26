@@ -302,7 +302,16 @@ Public Class frmMain
     End Sub
 
     Private Sub pb_DragDrop(sender As Object, e As DragEventArgs) Handles pb.DragDrop
-        pb.Image = DirectCast(e.Data.GetData(DataFormats.Bitmap, True), Bitmap)
+        Try
+            If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+                pb.Image = Image.FromFile(CType(e.Data.GetData(DataFormats.FileDrop), Array).GetValue(0).ToString)
+            Else
+                MsgBox("dataformats.bitmap")
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error doing drag/drop")
+        End Try
     End Sub
 
     Private Sub pb_DragEnter(sender As Object, e As DragEventArgs) Handles pb.DragEnter
