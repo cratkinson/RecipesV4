@@ -305,12 +305,14 @@ Public Class frmMain
         Dim aNewPhoto As RecipeImage = New RecipeImage With {.PhotoAsImage = theImage}
 
         r.Photos.Add(aNewPhoto)
-        bsPhotos.Add(aNewPhoto)
+        theApp.Recipe_Update(r)
+        theApp.Save()
 
+        bsPhotos.DataSource = r.Photos
         bs.DataSource = r
         pb.Image = theImage
-        pb.BackColor = Color.BlanchedAlmond
-        hasChanges = True
+        '        pb.BackColor = Color.BlanchedAlmond
+        '       hasChanges = True
     End Sub
     Private Sub pb_DragDrop(sender As Object, e As DragEventArgs) Handles pb.DragDrop
         Try
@@ -357,5 +359,9 @@ Public Class frmMain
         Else
 
         End If
+    End Sub
+
+    Private Sub BindingNavigatorAddNewItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorAddNewItem.Click
+
     End Sub
 End Class
