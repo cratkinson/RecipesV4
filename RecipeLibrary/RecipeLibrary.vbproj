@@ -129,6 +129,10 @@
       <DependentUpon>201311231530218_AddComplexRecipeTitle.vb</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201311231530218_AddComplexRecipeTitle.vb" />
+    <Compile Include="Migrations\201311301451516_AddNoteLastUpdateDate.Designer.vb">
+      <DependentUpon>201311301451516_AddNoteLastUpdateDate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311301451516_AddNoteLastUpdateDate.vb" />
     <Compile Include="Migrations\Configuration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -191,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311231530218_AddComplexRecipeTitle.resx">
       <DependentUpon>201311231530218_AddComplexRecipeTitle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311301451516_AddNoteLastUpdateDate.resx">
+      <DependentUpon>201311301451516_AddNoteLastUpdateDate.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
