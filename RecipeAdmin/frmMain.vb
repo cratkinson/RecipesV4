@@ -1,4 +1,6 @@
 ﻿Imports RecipeLibrary
+Imports System.Data.Entity.Core
+
 Public Class frmMain
     Private theApp As App = New App
     Private theUser As Contributor = theApp.Contributor_Get_By_Email("chip@atkinsons.com")
@@ -207,6 +209,8 @@ Public Class frmMain
             Dim theNote As New Note With {.Recipe = bs.DataSource}
             theUser.Notes.Add(theNote)
             bsNote.DataSource = theNote
+        Else
+            CType(bsNote.DataSource, Note).LastUpdate = DateTime.Now
         End If
     End Sub
     Private Sub aKeyPressEvent(sender As Object, e As KeyPressEventArgs)
