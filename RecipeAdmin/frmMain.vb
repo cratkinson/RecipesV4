@@ -206,7 +206,7 @@ Public Class frmMain
         txtNotes.BackColor = Color.BlanchedAlmond
         hasChanges = True
         If bsNote.Count = 0 Then
-            Dim theNote As New Note With {.Recipe = bs.DataSource}
+            Dim theNote As New Note With {.Recipe = bs.DataSource, .LastUpdate = DateTime.Now}
             theUser.Notes.Add(theNote)
             bsNote.DataSource = theNote
         Else
@@ -282,7 +282,7 @@ Public Class frmMain
         If theUser.HasANote(r) Then
             bsNote.DataSource = theUser.Notes.SingleOrDefault(Function(f) f.RecipeID = r.RecipeID)
         Else
-            bsNote.DataSource = New Note
+            'bsNote.DataSource = New Note
         End If
 
         If r.Photos.Count > 0 Then

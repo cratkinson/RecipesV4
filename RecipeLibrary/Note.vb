@@ -10,7 +10,5 @@ Public Class Note
     Public Property Contributor As Contributor
     Public Property Recipe As Recipe
 
-    Public Sub New()
-        Me.LastUpdate = DateTime.Now
-    End Sub
+
 End Class
